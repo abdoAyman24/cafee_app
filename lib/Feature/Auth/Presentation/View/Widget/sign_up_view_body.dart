@@ -2,8 +2,10 @@ import 'package:caffee/Core/Widget/custom_elevat_button.dart';
 import 'package:caffee/Core/Widget/custom_text_form.dart';
 import 'package:caffee/Core/utils/app_color.dart';
 import 'package:caffee/Core/utils/app_text_styles.dart';
+import 'package:caffee/Feature/Auth/Presentation/Manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:caffee/Feature/Auth/Presentation/View/Widget/custom_auth_head.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpViewBody extends StatefulWidget {
   const SignUpViewBody({super.key});
@@ -15,7 +17,7 @@ class SignUpViewBody extends StatefulWidget {
 class _SignUpViewBodyState extends State<SignUpViewBody> {
   final GlobalKey<FormState> globalKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-
+  late String name, email, number, password;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -40,28 +42,33 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   CustomTextForm(
                     header: 'Username',
                     hint: 'Username',
-                    onSave: (value) {},
+                    onSave: (value) {
+                      name = value!;
+                    },
                     keyboardType: TextInputType.emailAddress,
                   ),
-                  const SizedBox(height: 8),
                   CustomTextForm(
                     header: 'Email',
                     hint: 'Email',
-                    onSave: (value) {},
+                    onSave: (value) {
+                      email = value!;
+                    },
                     keyboardType: TextInputType.emailAddress,
                   ),
                   CustomTextForm(
                     header: 'Mobile Number',
                     hint: 'Mobile Number',
-                    onSave: (value) {},
+                    onSave: (value) {
+                      number = value!;
+                    },
                     keyboardType: TextInputType.emailAddress,
                   ),
-                  const SizedBox(height: 8),
-                  const SizedBox(height: 8),
                   CustomTextForm(
                     header: 'Pasword',
                     hint: 'Pasword',
-                    onSave: (value) {},
+                    onSave: (value) {
+                      password = value!;
+                    },
                     showSuffixIcon: true,
                     keyboardType: TextInputType.text,
                   ),
@@ -74,6 +81,12 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               onPressed: () {
                 if (globalKey.currentState!.validate()) {
                   globalKey.currentState!.save();
+                  context.read<SignUpCubit>().createUserWithEmailAndPassword(
+                    name: name,
+                    email: email,
+                    number: number,
+                    password: password,
+                  );
                 } else {
                   autovalidateMode = AutovalidateMode.always;
                 }

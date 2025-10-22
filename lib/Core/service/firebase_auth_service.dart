@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:caffee/Core/error/custom_exception.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -39,11 +41,16 @@ class FireBaseAuthService {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-         throw CustomException(error: 'User Or Password not Correct.');
+        throw CustomException(error: 'User Or Password not Correct.');
       } else if (e.code == 'wrong-password') {
-         throw CustomException(error: 'User Or Password not Correct.');
+        throw CustomException(error: 'User Or Password not Correct.');
+      } else if (e.code == 'invalid-credential') {
+        throw CustomException(error: 'User Or Password not Correct.');
       } else {
-        throw CustomException(error: 'this is A problem,try again later');
+        log(e.toString());
+        throw CustomException(
+          error: 'this is A problem,please try again later${e.credential}',
+        );
       }
     }
   }
