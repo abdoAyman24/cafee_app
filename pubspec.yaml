@@ -28,16 +28,19 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cloud_firestore: ^5.4.4
   cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
+  firebase_auth: ^5.3.2
+  firebase_core: ^3.7.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.2.0
   flutter_svg_provider: ^1.0.7
+  get_it: ^8.2.0
   intl: ^0.20.2
-  firebase_core: ^3.7.0
-  firebase_auth: ^5.3.2
-  cloud_firestore: ^5.4.4
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -80,7 +83,6 @@ flutter:
     - family: MyCustomICon
       fonts:
         - asset: assets/fonts/MyCustomICon.ttf
-
 
 flutter_assets:
   assets_path: assets/images/
