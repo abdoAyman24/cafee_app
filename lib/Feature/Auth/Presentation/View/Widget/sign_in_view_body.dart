@@ -1,0 +1,118 @@
+import 'package:caffee/Core/Widget/custom_elevat_button.dart';
+import 'package:caffee/Core/Widget/custom_text_form.dart';
+import 'package:caffee/Core/utils/app_color.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
+import 'package:caffee/Feature/Auth/Presentation/View/Widget/custom_auth_head.dart';
+import 'package:caffee/Feature/Auth/Presentation/View/Widget/sign_up_view.dart';
+import 'package:caffee/icons/my_custom_i_con_icons.dart';
+import 'package:flutter/material.dart';
+
+class SignInViewBody extends StatefulWidget {
+  const SignInViewBody({super.key});
+
+  @override
+  State<SignInViewBody> createState() => _SignInViewBodyState();
+}
+
+class _SignInViewBodyState extends State<SignInViewBody> {
+  final GlobalKey<FormState> globalKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  final TextEditingController controller = TextEditingController();
+  
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Form(
+        key: globalKey,
+        autovalidateMode: autovalidateMode,
+        child: Column(
+          children: [
+            CustomAuthHead(title: 'Welcome', subTitle: 'Login to your account'),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 30,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomTextForm(
+                    header: 'Email',
+                    hint: 'Email',
+                    onSave: (value) {},
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+                  const SizedBox(height: 8),
+                  CustomTextForm(
+                    header: 'Pasword',
+                    hint: 'Pasword',
+                    onSave: (value) {},
+                    showSuffixIcon: true,
+                    keyboardType: TextInputType.text,
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          'Forgot Password?',
+                          textAlign: TextAlign.center,
+                          style: AppText.medium16.copyWith(color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            CustomElevatButton(
+              text: 'Login',
+              onPressed: () {
+                if (globalKey.currentState!.validate()) {
+                  globalKey.currentState!.save();
+                } else {
+                  autovalidateMode = AutovalidateMode.always;
+                }
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Row(
+                children: [
+                  Text(
+                    'Don’t have account?   ',
+                    textAlign: TextAlign.center,
+                    style: AppText.medium16.copyWith(color: appColor.greyText),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, SignUpView.routeName);
+                    },
+                    child: Text(
+                      'Create Now ',
+                      textAlign: TextAlign.center,
+                      style: AppText.medium20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(MyCustomICon.google, size: 30),
+                  Icon(MyCustomICon.instagram, size: 30),
+                  Icon(MyCustomICon.facebook_squared, size: 30),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
