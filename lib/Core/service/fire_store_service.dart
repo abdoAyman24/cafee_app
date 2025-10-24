@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FireStoreService extends DataBaseService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  
   @override
   Future<void> addUser({
     required String path,

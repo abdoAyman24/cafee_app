@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:caffee/Feature/Auth/domain/user_entity.dart';
 import 'package:caffee/Feature/Auth/domain/user_repo.dart';
@@ -20,6 +22,22 @@ class SignInCubit extends Cubit<SignInState> {
     );
     result.fold(
       (l) {
+        emit(SignInFailure(errorMessage: l.message));
+      },
+      (r) {
+        emit(SignInSuccess(userEntity: r));
+      },
+    );
+  }
+
+  Future<void> signInWithGoogle() async {
+    emit(SignInLoad());
+    var result = await userRepo.signInWithGoogle();
+
+    result.fold(
+      (l) {
+        log(l.message);
+
         emit(SignInFailure(errorMessage: l.message));
       },
       (r) {

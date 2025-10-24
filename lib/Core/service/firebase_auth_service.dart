@@ -2,8 +2,16 @@ import 'dart:developer';
 
 import 'package:caffee/Core/error/custom_exception.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FireBaseAuthService {
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  Future<void> deleteUser() async {
+   await FirebaseAuth.instance.currentUser!.delete();
+    
+  }
+
   Future<User> createUserWithEmailAndPassword({
     required String email,
     required String password,
@@ -54,4 +62,26 @@ class FireBaseAuthService {
       }
     }
   }
+
+  
+Future<UserCredential> signInWithGoogle() async {
+  // 1️⃣ تسجيل الدخول في حساب Google
+  final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+
+  if (googleUser == null) {
+    throw CustomException(error: 'تم إلغاء تسجيل الدخول');
+  }
+
+  // 2️⃣ الحصول على التوكين من Google
+  final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+
+  // 3️⃣ إنشاء credential لـ Firebase
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth.accessToken,
+    idToken: googleAuth.idToken,
+  );
+
+  // 4️⃣ تسجيل الدخول في Firebase
+  return await FirebaseAuth.instance.signInWithCredential(credential);
+}
 }

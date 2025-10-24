@@ -83,7 +83,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   globalKey.currentState!.save();
                   context.read<SignUpCubit>().createUserWithEmailAndPassword(
                     name: name,
-                    email: email,
+                    email: email.toLowerCase(),
                     number: number,
                     password: password,
                   );

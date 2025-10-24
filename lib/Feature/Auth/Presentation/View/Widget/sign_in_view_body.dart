@@ -79,7 +79,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 if (globalKey.currentState!.validate()) {
                   globalKey.currentState!.save();
                   context.read<SignInCubit>().sigInWithEmailAndPassword(
-                    email: email,
+                    email: email.toLowerCase(),
                     password: password,
                   );
                 } else {
@@ -114,7 +114,12 @@ class _SignInViewBodyState extends State<SignInViewBody> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Icon(MyCustomICon.google, size: 30),
+                  InkWell(
+                    onTap: () {
+                      context.read<SignInCubit>().signInWithGoogle();
+                    },
+                    child: Icon(MyCustomICon.google, size: 30),
+                  ),
                   Icon(MyCustomICon.instagram, size: 30),
                   Icon(MyCustomICon.facebook_squared, size: 30),
                 ],
