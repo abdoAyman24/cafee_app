@@ -39,11 +39,12 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
+  flutter_facebook_auth: ^7.1.2
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.2.0
   flutter_svg_provider: ^1.0.7
   get_it: ^8.2.0
-  google_sign_in: ^6.1.6
+  google_sign_in: ^6.3.0
   intl: ^0.20.2
   modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.5.3
@@ -89,10 +90,13 @@ flutter:
     - family: MyCustomICon
       fonts:
         - asset: assets/fonts/MyCustomICon.ttf
+    - family: CafeeIcon
+      fonts:
+        - asset: assets/fonts/CafeeIcon.ttf    
 
 flutter_assets:
   assets_path: assets/images/
-  output_path: lib/core/Utils/
+  output_path: lib/Core/Utils/
   filename: app_icon.dart
   field_prefix: null
 flutter_intl:

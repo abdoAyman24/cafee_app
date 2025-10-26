@@ -38,14 +38,14 @@ class UserRepoImpl extends UserRepo {
       dataBaseService.addUser(
         path: BackEndPoint.addUsers,
         json: UserModel.fromUser(
-          user: user,
+          email: user.email!,
           name: name,
           number: number,
         ).tojson(),
         documentId: user.uid,
       );
       UserEntity userEntity = UserModel.fromUser(
-        user: user,
+        email: user.email!,
         name: name,
         number: number,
       ).toUSerEntity();
@@ -88,22 +88,57 @@ class UserRepoImpl extends UserRepo {
       UserCredential userCredintial = await fireBaseAuthService
           .signInWithGoogle();
       User user = userCredintial.user!;
-      log('$user');
       UserModel userModel = UserModel.fromUser(
-        user: user,
+        email: user.email!,
         name: user.displayName!,
-        number: user.phoneNumber??'',
+        number: user.phoneNumber ?? '',
       );
-      log('$userModel');
       dataBaseService.addUser(
         path: BackEndPoint.addUsers,
         json: userModel.tojson(),
       );
       UserEntity userEntity = userModel.toUSerEntity();
+      addUserToSharedPreferences(userEntity);
       return Right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(message: e.error));
     } catch (e) {
+      return left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    try {
+      log('Start signIn with facebook');
+      UserCredential userCredintial = await fireBaseAuthService
+          .signInWithFacebook();
+      log('1 step signIn with facebook');
+
+      final user = userCredintial.user;
+      if (user == null) {
+        return left(
+          ServerFailure(message: 'Facebook login failed: no user returned.'),
+        );
+      }
+      UserModel userModel = UserModel.fromUser(
+        email: user.emailVerified?user.email!:'not found',
+        name: user.displayName!,
+        number: user.phoneNumber ?? '',
+      );
+
+      dataBaseService.addUser(
+        path: BackEndPoint.addUsers,
+        json: userModel.tojson(),
+      );
+
+      UserEntity userEntity = userModel.toUSerEntity();
+      return Right(userEntity);
+    } on CustomException catch (e) {
+      return left(ServerFailure(message: e.error));
+    } catch (e) {
+      log('error signIn with facebook');
+
       return left(ServerFailure(message: e.toString()));
     }
   }

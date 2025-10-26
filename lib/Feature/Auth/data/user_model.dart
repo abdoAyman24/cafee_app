@@ -1,5 +1,4 @@
 import 'package:caffee/Feature/Auth/domain/user_entity.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel {
   final String name;
@@ -27,13 +26,13 @@ class UserModel {
     );
   }
   factory UserModel.fromUser({
-    required User user,
+    required String email,
     required String name,
     required String number,
   }) {
     return UserModel(
       name: name,
-      email: user.email!,
+      email: email,
       number: number,
     );
   }

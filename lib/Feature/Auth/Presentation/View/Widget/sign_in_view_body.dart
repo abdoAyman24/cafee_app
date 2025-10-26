@@ -121,7 +121,12 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                     child: Icon(MyCustomICon.google, size: 30),
                   ),
                   Icon(MyCustomICon.instagram, size: 30),
-                  Icon(MyCustomICon.facebook_squared, size: 30),
+                  InkWell(
+                    onTap: () {
+                      context.read<SignInCubit>().signInWithFacebook();
+                    },
+                    child: Icon(MyCustomICon.facebook_squared, size: 30),
+                  ),
                 ],
               ),
             ),

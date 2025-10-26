@@ -16,6 +16,7 @@ abstract class UserRepo {
   });
 
   Future<Either<Failure, UserEntity>> signInWithGoogle();
+  Future<Either<Failure, UserEntity>> signInWithFacebook();
   void addUserToSharedPreferences(UserEntity user);
   Future<void> deleteUser(User? user);
 }
