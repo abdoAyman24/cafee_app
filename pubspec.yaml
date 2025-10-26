@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   bloc: ^9.1.0
+  cached_network_image: ^3.4.1
   cloud_firestore: ^6.0.1
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
@@ -47,6 +48,7 @@ dependencies:
   google_sign_in: ^6.3.0
   intl: ^0.20.2
   modal_progress_hud_nsn: ^0.5.1
+  offset_list: ^0.1.0
   shared_preferences: ^2.5.3
 
 dev_dependencies:
@@ -92,7 +94,7 @@ flutter:
         - asset: assets/fonts/MyCustomICon.ttf
     - family: CafeeIcon
       fonts:
-        - asset: assets/fonts/CafeeIcon.ttf    
+        - asset: assets/fonts/CafeeIcon.ttf
 
 flutter_assets:
   assets_path: assets/images/
