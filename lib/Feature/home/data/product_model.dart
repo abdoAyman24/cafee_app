@@ -9,7 +9,9 @@ class ProductModel {
   final String details;
   final num rate;
 
-  final num price;
+  final num priceS;
+  final num priceM;
+  final num priceL;
   final List<ReviewModel> reviewModel;
 
   ProductModel({
@@ -21,7 +23,9 @@ class ProductModel {
     required this.details,
     required this.rate,
 
-    required this.price,
+    required this.priceS,
+    required this.priceM,
+    required this.priceL,
     required this.reviewModel,
   });
 
@@ -34,7 +38,10 @@ class ProductModel {
       details: json['details'],
       rate: json['rate'],
 
-      price: json['price'],
+      priceS: json['priceS'],
+            priceM: json['priceM'],
+      priceL: json['priceL'],
+
       reviewModel: json['reviewEntity'],
     );
   }
@@ -47,7 +54,9 @@ class ProductModel {
       details: details,
       rate: rate,
 
-      price: price,
+      priceS: priceS,
+      priceM: priceM,
+      priceL: priceL,
       reviewEntity: reviewModel.map((e) => e.toEntity()).toList(),
     );
   }

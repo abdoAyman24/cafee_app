@@ -30,7 +30,7 @@ final ThemeData AppTheme = ThemeData(
       fontSize: 26,
       fontWeight: FontWeight.bold,
     ),
-   // bodySmall: TextStyle(color: Colors.white, fontSize: 14),
+    // bodySmall: TextStyle(color: Colors.white, fontSize: 14),
     bodyMedium: TextStyle(color: Colors.white, fontSize: 16),
 
     labelLarge: TextStyle(
@@ -41,7 +41,7 @@ final ThemeData AppTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: const Color(0xFF00A6FF),
+      backgroundColor: appColor.primary,
       foregroundColor: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       padding: const EdgeInsets.symmetric(vertical: 14),

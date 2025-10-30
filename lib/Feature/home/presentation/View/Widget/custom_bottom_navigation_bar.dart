@@ -16,6 +16,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0.92)),
       child: Row(
         children: navList.asMap().entries.map((e) {

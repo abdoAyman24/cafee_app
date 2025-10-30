@@ -1,3 +1,4 @@
+import 'package:caffee/Feature/Favorite/presentation/View/favorite_view.dart';
 import 'package:caffee/Feature/home/presentation/View/home_view.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class MainViewBody extends StatelessWidget {
         SizedBox(
           child: Text('Card', style: TextStyle(color: Colors.white)),
         ),
-        SizedBox(child: Text('Favorite')),
+        FavoriteView(),
         SizedBox(child: Text('Setting')),
       ],
     );

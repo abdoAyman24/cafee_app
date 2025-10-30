@@ -2,20 +2,30 @@ import 'package:caffee/Feature/home/domain/Entity/product_entity.dart';
 import 'package:caffee/Feature/home/domain/Entity/review_entity.dart';
 
 class DummyProduct {
-
-
-final List<ProductEntity> products = [
+  final List<ProductEntity> products = [
   ProductEntity(
     productId: 'p001',
     name: 'Espresso',
     additional: 'No Additives',
     details: 'Strong and rich espresso made with high-pressure hot water.',
     rate: 4.7,
-    price: 40.0,
+    priceS: 40.0,
+    priceM: 45.0,
+    priceL: 50.0,
     imageUrl: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085',
     reviewEntity: [
-      ReviewEntity(name: 'Ali Ahmed', date: '2025-10-21', description: 'Very strong and rich flavor.', rate: 4.8),
-      ReviewEntity(name: 'Sara Hassan', date: '2025-10-22', description: 'Perfect balance and aroma.', rate: 4.6),
+      ReviewEntity(
+        name: 'Ali Ahmed',
+        date: '2025-10-21',
+        description: 'Very strong and rich flavor.',
+        rate: 4.8,
+      ),
+      ReviewEntity(
+        name: 'Sara Hassan',
+        date: '2025-10-22',
+        description: 'Perfect balance and aroma.',
+        rate: 4.6,
+      ),
     ],
   ),
   ProductEntity(
@@ -24,11 +34,23 @@ final List<ProductEntity> products = [
     additional: 'Hot Water',
     details: 'Espresso mixed with hot water for a lighter taste.',
     rate: 4.5,
-    price: 45.0,
-    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93',
+    priceS: 45.0,
+    priceM: 50.0,
+    priceL: 55.0,
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80',
     reviewEntity: [
-      ReviewEntity(name: 'Omar Ali', date: '2025-10-19', description: 'Smooth and not too strong.', rate: 4.4),
-      ReviewEntity(name: 'Nour Hany', date: '2025-10-20', description: 'Tastes great, good for mornings.', rate: 4.5),
+      ReviewEntity(
+        name: 'Omar Ali',
+        date: '2025-10-19',
+        description: 'Smooth and not too strong.',
+        rate: 4.4,
+      ),
+      ReviewEntity(
+        name: 'Nour Hany',
+        date: '2025-10-20',
+        description: 'Tastes great, good for mornings.',
+        rate: 4.5,
+      ),
     ],
   ),
   ProductEntity(
@@ -37,11 +59,23 @@ final List<ProductEntity> products = [
     additional: 'Milk Foam',
     details: 'Espresso blended with steamed milk and topped with thick foam.',
     rate: 4.8,
-    price: 55.0,
+    priceS: 55.0,
+    priceM: 60.0,
+    priceL: 65.0,
     imageUrl: 'https://images.unsplash.com/photo-1510626176961-4b57d4fbad03',
     reviewEntity: [
-      ReviewEntity(name: 'Laila Kamal', date: '2025-10-22', description: 'Very creamy and well-balanced.', rate: 4.9),
-      ReviewEntity(name: 'Ahmed Samir', date: '2025-10-23', description: 'Perfect texture and flavor.', rate: 4.8),
+      ReviewEntity(
+        name: 'Laila Kamal',
+        date: '2025-10-22',
+        description: 'Very creamy and well-balanced.',
+        rate: 4.9,
+      ),
+      ReviewEntity(
+        name: 'Ahmed Samir',
+        date: '2025-10-23',
+        description: 'Perfect texture and flavor.',
+        rate: 4.8,
+      ),
     ],
   ),
   ProductEntity(
@@ -50,11 +84,23 @@ final List<ProductEntity> products = [
     additional: 'Whole Milk',
     details: 'Smooth espresso with a large amount of steamed milk.',
     rate: 4.6,
-    price: 50.0,
+    priceS: 50.0,
+    priceM: 55.0,
+    priceL: 60.0,
     imageUrl: 'https://images.unsplash.com/photo-1511920170033-f8396924c348',
     reviewEntity: [
-      ReviewEntity(name: 'Rana Youssef', date: '2025-10-21', description: 'Light and delicious.', rate: 4.6),
-      ReviewEntity(name: 'Hassan Adel', date: '2025-10-22', description: 'Good balance between milk and coffee.', rate: 4.7),
+      ReviewEntity(
+        name: 'Rana Youssef',
+        date: '2025-10-21',
+        description: 'Light and delicious.',
+        rate: 4.6,
+      ),
+      ReviewEntity(
+        name: 'Hassan Adel',
+        date: '2025-10-22',
+        description: 'Good balance between milk and coffee.',
+        rate: 4.7,
+      ),
     ],
   ),
   ProductEntity(
@@ -63,11 +109,23 @@ final List<ProductEntity> products = [
     additional: 'Chocolate + Milk',
     details: 'A delightful blend of espresso, chocolate, and milk.',
     rate: 4.9,
-    price: 60.0,
-    imageUrl: 'https://images.unsplash.com/photo-1525088553748-01d6e210e7b2',
+    priceS: 60.0,
+    priceM: 65.0,
+    priceL: 70.0,
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80',
     reviewEntity: [
-      ReviewEntity(name: 'Yara Nabil', date: '2025-10-20', description: 'Chocolate flavor is perfect.', rate: 5.0),
-      ReviewEntity(name: 'Mohamed Ehab', date: '2025-10-21', description: 'Rich and smooth taste.', rate: 4.8),
+      ReviewEntity(
+        name: 'Yara Nabil',
+        date: '2025-10-20',
+        description: 'Chocolate flavor is perfect.',
+        rate: 5.0,
+      ),
+      ReviewEntity(
+        name: 'Mohamed Ehab',
+        date: '2025-10-21',
+        description: 'Rich and smooth taste.',
+        rate: 4.8,
+      ),
     ],
   ),
   ProductEntity(
@@ -76,11 +134,23 @@ final List<ProductEntity> products = [
     additional: 'Drop of Milk',
     details: 'Strong espresso topped with a small amount of milk foam.',
     rate: 4.4,
-    price: 48.0,
-    imageUrl: 'https://images.unsplash.com/photo-1577985043055-3f6b12e8d3c9',
+    priceS: 48.0,
+    priceM: 53.0,
+    priceL: 58.0,
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80',
     reviewEntity: [
-      ReviewEntity(name: 'Salma Mostafa', date: '2025-10-18', description: 'Strong but smooth.', rate: 4.4),
-      ReviewEntity(name: 'Ola Fathi', date: '2025-10-19', description: 'Nice kick for mornings.', rate: 4.5),
+      ReviewEntity(
+        name: 'Salma Mostafa',
+        date: '2025-10-18',
+        description: 'Strong but smooth.',
+        rate: 4.4,
+      ),
+      ReviewEntity(
+        name: 'Ola Fathi',
+        date: '2025-10-19',
+        description: 'Nice kick for mornings.',
+        rate: 4.5,
+      ),
     ],
   ),
   ProductEntity(
@@ -89,11 +159,23 @@ final List<ProductEntity> products = [
     additional: 'Light Milk',
     details: 'Rich espresso with a smooth layer of lightly steamed milk.',
     rate: 4.6,
-    price: 52.0,
-    imageUrl: 'https://images.unsplash.com/photo-1527169402691-a3f64e49f7e3',
+    priceS: 52.0,
+    priceM: 57.0,
+    priceL: 62.0,
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80',
     reviewEntity: [
-      ReviewEntity(name: 'Nada Fadel', date: '2025-10-20', description: 'Smooth and elegant.', rate: 4.7),
-      ReviewEntity(name: 'Hany Saber', date: '2025-10-22', description: 'Delicate flavor and texture.', rate: 4.6),
+      ReviewEntity(
+        name: 'Nada Fadel',
+        date: '2025-10-20',
+        description: 'Smooth and elegant.',
+        rate: 4.7,
+      ),
+      ReviewEntity(
+        name: 'Hany Saber',
+        date: '2025-10-22',
+        description: 'Delicate flavor and texture.',
+        rate: 4.6,
+      ),
     ],
   ),
   ProductEntity(
@@ -102,11 +184,23 @@ final List<ProductEntity> products = [
     additional: 'Sugar (optional)',
     details: 'Traditional Turkish coffee brewed slowly for a strong flavor.',
     rate: 4.8,
-    price: 35.0,
-    imageUrl: 'https://images.unsplash.com/photo-1574561270809-78c2b1e3a05e',
+    priceS: 35.0,
+    priceM: 40.0,
+    priceL: 45.0,
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80',
     reviewEntity: [
-      ReviewEntity(name: 'Mona Saber', date: '2025-10-20', description: 'Authentic and strong taste.', rate: 4.9),
-      ReviewEntity(name: 'Mahmoud Yasser', date: '2025-10-22', description: 'Best Turkish coffee I tried.', rate: 4.8),
+      ReviewEntity(
+        name: 'Mona Saber',
+        date: '2025-10-20',
+        description: 'Authentic and strong taste.',
+        rate: 4.9,
+      ),
+      ReviewEntity(
+        name: 'Mahmoud Yasser',
+        date: '2025-10-22',
+        description: 'Best Turkish coffee I tried.',
+        rate: 4.8,
+      ),
     ],
   ),
   ProductEntity(
@@ -115,11 +209,23 @@ final List<ProductEntity> products = [
     additional: 'Ice',
     details: 'Smooth and refreshing coffee brewed with cold water for hours.',
     rate: 4.5,
-    price: 55.0,
+    priceS: 55.0,
+    priceM: 60.0,
+    priceL: 65.0,
     imageUrl: 'https://images.unsplash.com/photo-1498804103079-a6351b050096',
     reviewEntity: [
-      ReviewEntity(name: 'Aya Sami', date: '2025-10-23', description: 'Refreshing and light.', rate: 4.5),
-      ReviewEntity(name: 'Ziad Omar', date: '2025-10-24', description: 'Perfect for hot weather.', rate: 4.6),
+      ReviewEntity(
+        name: 'Aya Sami',
+        date: '2025-10-23',
+        description: 'Refreshing and light.',
+        rate: 4.5,
+      ),
+      ReviewEntity(
+        name: 'Ziad Omar',
+        date: '2025-10-24',
+        description: 'Perfect for hot weather.',
+        rate: 4.6,
+      ),
     ],
   ),
   ProductEntity(
@@ -128,11 +234,23 @@ final List<ProductEntity> products = [
     additional: 'Milk + Ice',
     details: 'Chilled latte perfect for summer days.',
     rate: 4.7,
-    price: 58.0,
-    imageUrl: 'https://images.unsplash.com/photo-1523942839745-7848d4a355d7',
+    priceS: 58.0,
+    priceM: 63.0,
+    priceL: 68.0,
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80',
     reviewEntity: [
-      ReviewEntity(name: 'Heba Farid', date: '2025-10-21', description: 'Cool and creamy.', rate: 4.7),
-      ReviewEntity(name: 'Omar Salah', date: '2025-10-23', description: 'Best iced coffee ever!', rate: 4.8),
+      ReviewEntity(
+        name: 'Heba Farid',
+        date: '2025-10-21',
+        description: 'Cool and creamy.',
+        rate: 4.7,
+      ),
+      ReviewEntity(
+        name: 'Omar Salah',
+        date: '2025-10-23',
+        description: 'Best iced coffee ever!',
+        rate: 4.8,
+      ),
     ],
   ),
   ProductEntity(
@@ -141,11 +259,23 @@ final List<ProductEntity> products = [
     additional: 'Caramel Syrup + Milk',
     details: 'Sweet caramel flavor combined with smooth espresso and milk.',
     rate: 4.9,
-    price: 62.0,
-    imageUrl: 'https://images.unsplash.com/photo-1527169402691-a3f64e49f7e3',
+    priceS: 62.0,
+    priceM: 67.0,
+    priceL: 72.0,
+    imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80',
     reviewEntity: [
-      ReviewEntity(name: 'Lina Tarek', date: '2025-10-21', description: 'The caramel taste is amazing!', rate: 4.9),
-      ReviewEntity(name: 'Hassan Fathy', date: '2025-10-22', description: 'Very smooth and sweet.', rate: 4.8),
+      ReviewEntity(
+        name: 'Lina Tarek',
+        date: '2025-10-21',
+        description: 'The caramel taste is amazing!',
+        rate: 4.9,
+      ),
+      ReviewEntity(
+        name: 'Hassan Fathy',
+        date: '2025-10-22',
+        description: 'Very smooth and sweet.',
+        rate: 4.8,
+      ),
     ],
   ),
   ProductEntity(
@@ -154,11 +284,23 @@ final List<ProductEntity> products = [
     additional: 'Vanilla Ice Cream',
     details: 'A scoop of vanilla ice cream topped with a shot of espresso.',
     rate: 4.8,
-    price: 65.0,
+    priceS: 65.0,
+    priceM: 70.0,
+    priceL: 75.0,
     imageUrl: 'https://images.unsplash.com/photo-1510626176961-4b57d4fbad03',
     reviewEntity: [
-      ReviewEntity(name: 'Reem Magdy', date: '2025-10-20', description: 'Coffee and ice cream combo = heaven!', rate: 5.0),
-      ReviewEntity(name: 'Youssef Ahmed', date: '2025-10-21', description: 'Delicious dessert drink.', rate: 4.9),
+      ReviewEntity(
+        name: 'Reem Magdy',
+        date: '2025-10-20',
+        description: 'Coffee and ice cream combo = heaven!',
+        rate: 5.0,
+      ),
+      ReviewEntity(
+        name: 'Youssef Ahmed',
+        date: '2025-10-21',
+        description: 'Delicious dessert drink.',
+        rate: 4.9,
+      ),
     ],
   ),
   ProductEntity(
@@ -167,11 +309,23 @@ final List<ProductEntity> products = [
     additional: 'Equal Milk',
     details: 'Equal parts espresso and steamed milk for balanced flavor.',
     rate: 4.5,
-    price: 47.0,
+    priceS: 47.0,
+    priceM: 52.0,
+    priceL: 57.0,
     imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93',
     reviewEntity: [
-      ReviewEntity(name: 'Tamer Said', date: '2025-10-22', description: 'Nice balance, not too milky.', rate: 4.5),
-      ReviewEntity(name: 'Mai Adel', date: '2025-10-23', description: 'Smooth and easy to drink.', rate: 4.6),
+      ReviewEntity(
+        name: 'Tamer Said',
+        date: '2025-10-22',
+        description: 'Nice balance, not too milky.',
+        rate: 4.5,
+      ),
+      ReviewEntity(
+        name: 'Mai Adel',
+        date: '2025-10-23',
+        description: 'Smooth and easy to drink.',
+        rate: 4.6,
+      ),
     ],
   ),
   ProductEntity(
@@ -180,11 +334,23 @@ final List<ProductEntity> products = [
     additional: 'Whiskey + Cream',
     details: 'Classic coffee cocktail with Irish whiskey and cream.',
     rate: 4.6,
-    price: 70.0,
+    priceS: 70.0,
+    priceM: 75.0,
+    priceL: 80.0,
     imageUrl: 'https://images.unsplash.com/photo-1541167760496-1628856ab772',
     reviewEntity: [
-      ReviewEntity(name: 'Fady George', date: '2025-10-22', description: 'Perfect blend of coffee and cream.', rate: 4.7),
-      ReviewEntity(name: 'Nadine Fouad', date: '2025-10-23', description: 'Rich and warm flavor.', rate: 4.6),
+      ReviewEntity(
+        name: 'Fady George',
+        date: '2025-10-22',
+        description: 'Perfect blend of coffee and cream.',
+        rate: 4.7,
+      ),
+      ReviewEntity(
+        name: 'Nadine Fouad',
+        date: '2025-10-23',
+        description: 'Rich and warm flavor.',
+        rate: 4.6,
+      ),
     ],
   ),
   ProductEntity(
@@ -193,14 +359,25 @@ final List<ProductEntity> products = [
     additional: 'Hazelnut Syrup + Foam',
     details: 'Cappuccino infused with nutty hazelnut syrup and milk foam.',
     rate: 4.9,
-    price: 63.0,
+    priceS: 63.0,
+    priceM: 68.0,
+    priceL: 73.0,
     imageUrl: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93',
     reviewEntity: [
-      ReviewEntity(name: 'Karim Hassan', date: '2025-10-21', description: 'Nutty flavor is amazing.', rate: 4.9),
-      ReviewEntity(name: 'Dina Adel', date: '2025-10-22', description: 'Very tasty and aromatic.', rate: 4.8),
+      ReviewEntity(
+        name: 'Karim Hassan',
+        date: '2025-10-21',
+        description: 'Nutty flavor is amazing.',
+        rate: 4.9,
+      ),
+      ReviewEntity(
+        name: 'Dina Adel',
+        date: '2025-10-22',
+        description: 'Very tasty and aromatic.',
+        rate: 4.8,
+      ),
     ],
   ),
 ];
-
 
 }

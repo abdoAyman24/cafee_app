@@ -56,6 +56,10 @@ abstract class AppText {
     fontWeight: FontWeight.w600,
     fontSize: 20,
   );
+  static const TextStyle semiBold28 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 28,
+  );
 
   static const TextStyle medium15 = TextStyle(
     fontWeight: FontWeight.w500,
@@ -73,6 +77,11 @@ abstract class AppText {
     fontWeight: FontWeight.w500,
     fontSize: 20,
   );
+   static const TextStyle medium24 = TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 24,
+  );
+  
 
   static const TextStyle regular26 = TextStyle(
     fontWeight: FontWeight.normal,
@@ -83,7 +92,10 @@ abstract class AppText {
     fontWeight: FontWeight.normal,
     fontSize: 16,
   );
-
+static const TextStyle regular18 = TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 18,
+  );
   static const TextStyle regular11 = TextStyle(
     fontWeight: FontWeight.normal,
     fontSize: 11,

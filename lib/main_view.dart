@@ -1,9 +1,6 @@
-import 'dart:developer';
 
-import 'package:caffee/Core/service/shared_preferences.dart';
 import 'package:caffee/Feature/home/presentation/View/Widget/custom_bottom_navigation_bar.dart';
-import 'package:caffee/Feature/home/presentation/View/Widget/main_view_body.dart';
-import 'package:caffee/constance.dart';
+import 'package:caffee/main_view_body.dart';
 import 'package:flutter/material.dart';
 
 class MainView extends StatefulWidget {
@@ -24,7 +21,7 @@ class _MainViewState extends State<MainView> {
         valueChanged: (value) {
           setState(() {
             selectIndex = value;
-            log('${SharedPreferencesSingleton.getUser(KUserData)}');
+          
           });
         },
       ),

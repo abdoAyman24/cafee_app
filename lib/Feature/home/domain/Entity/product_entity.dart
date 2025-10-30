@@ -8,7 +8,10 @@ class ProductEntity {
   final String details;
   final num rate;
 
-  final num price;
+  final num priceS;
+  final num priceM;
+  final num priceL;
+
   final List<ReviewEntity> reviewEntity;
 
   ProductEntity({
@@ -18,7 +21,10 @@ class ProductEntity {
     required this.additional,
     required this.details,
     required this.rate,
-    required this.price,
+    required this.priceS,
+    required this.priceM,
+    required this.priceL,
+
     required this.reviewEntity,
   });
 }

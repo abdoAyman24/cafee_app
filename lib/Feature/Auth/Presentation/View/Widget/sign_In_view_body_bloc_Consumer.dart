@@ -1,7 +1,7 @@
 import 'package:caffee/Core/helper/error_builder.dart';
 import 'package:caffee/Feature/Auth/Presentation/Manager/sign_in_cubit/sign_in_cubit.dart';
 import 'package:caffee/Feature/Auth/Presentation/View/Widget/sign_in_view_body.dart';
-import 'package:caffee/Feature/home/presentation/View/main_view.dart';
+import 'package:caffee/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
