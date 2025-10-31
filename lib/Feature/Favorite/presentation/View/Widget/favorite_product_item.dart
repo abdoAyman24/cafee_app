@@ -12,7 +12,7 @@ class FavoriteProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.96,
-      height: MediaQuery.of(context).size.height * 0.20,
+      height: MediaQuery.of(context).size.height * 0.18,
       padding: EdgeInsets.all(13),
       decoration: ShapeDecoration(
         gradient: LinearGradient(

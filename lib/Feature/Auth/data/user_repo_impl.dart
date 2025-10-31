@@ -70,7 +70,7 @@ class UserRepoImpl extends UserRepo {
         email: email,
         password: password,
       );
-      var json = await dataBaseService.getUser(
+      var json = await dataBaseService.getData(
         path: BackEndPoint.getUsers,
         documentId: user.uid,
       );

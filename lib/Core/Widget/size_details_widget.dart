@@ -1,6 +1,7 @@
-
 import 'package:caffee/Core/Widget/custom_size_item.dart';
+import 'package:caffee/Feature/home/presentation/manager/Product_Size_cubit/product_size_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SizeDetailsWidget extends StatefulWidget {
   const SizeDetailsWidget({super.key});
@@ -10,7 +11,6 @@ class SizeDetailsWidget extends StatefulWidget {
 }
 
 class _SizeDetailsWidgetState extends State<SizeDetailsWidget> {
-  Size size = Size.Smalle;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,26 +18,42 @@ class _SizeDetailsWidgetState extends State<SizeDetailsWidget> {
       children: [
         CustomSizeItem(
           text: 'S',
-          isSelect: size == Size.Smalle,
+          isSelect: context.read<ProductSizeCubit>().getSize() == 'priceS'
+              ? true
+              : false,
           onTap: () {
-            size = Size.Smalle;
+            context.read<ProductSizeCubit>().updateproductSize(
+              ProductSize.smalle,
+            );
+            context.read<ProductSizeCubit>().generateSize();
             setState(() {});
           },
         ),
         CustomSizeItem(
           text: 'M',
-          isSelect: size == Size.Medium,
+          isSelect: context.read<ProductSizeCubit>().getSize() == 'priceM'
+              ? true
+              : false,
           onTap: () {
-            size = Size.Medium;
+            context.read<ProductSizeCubit>().updateproductSize(
+              ProductSize.medium,
+            );
+            context.read<ProductSizeCubit>().generateSize();
+
             setState(() {});
-            
           },
         ),
         CustomSizeItem(
           text: 'L',
-          isSelect: size == Size.Large,
+          isSelect: context.read<ProductSizeCubit>().getSize() == 'priceL'
+              ? true
+              : false,
           onTap: () {
-            size = Size.Large;
+            context.read<ProductSizeCubit>().updateproductSize(
+              ProductSize.large,
+            );
+            context.read<ProductSizeCubit>().generateSize();
+
             setState(() {});
           },
         ),
@@ -45,5 +61,3 @@ class _SizeDetailsWidgetState extends State<SizeDetailsWidget> {
     );
   }
 }
-
-enum Size { Smalle, Large, Medium }

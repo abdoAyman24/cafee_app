@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 
 class ProductGridViewItem extends StatelessWidget {
   const ProductGridViewItem({super.key, required this.products});
+
   final List<ProductEntity> products;
+
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 15,
-          childAspectRatio: 0.72,
-          mainAxisSpacing: 15,
-        ),
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          return Product_item(product: products[index]);
-        },
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 15,
+        childAspectRatio: 0.72,
+        mainAxisSpacing: 15,
       ),
+      itemCount: products.length,
+      itemBuilder: (context, index) {
+        return Product_item(product: products[index]);
+      },
     );
   }
 }

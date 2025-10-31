@@ -1,4 +1,6 @@
+import 'package:caffee/Feature/home/presentation/manager/Product_Size_cubit/product_size_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailsBackBottom extends StatelessWidget {
   const DetailsBackBottom({super.key});
@@ -11,6 +13,9 @@ class DetailsBackBottom extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.pop(context);
+          context.read<ProductSizeCubit>().updateproductSize(
+            ProductSize.smalle,
+          );
         },
         child: Container(
           padding: EdgeInsets.all(10),

@@ -1,4 +1,4 @@
-import 'package:caffee/Feature/home/data/Review_model.dart';
+import 'package:caffee/Feature/home/data/Model/Review_model.dart';
 import 'package:caffee/Feature/home/domain/Entity/product_entity.dart';
 
 class ProductModel {
@@ -42,7 +42,7 @@ class ProductModel {
             priceM: json['priceM'],
       priceL: json['priceL'],
 
-      reviewModel: json['reviewEntity'],
+      reviewModel: List<ReviewModel>.from(json['reviewEntity']?.map((e)=>ReviewModel.fromJson(e))),
     );
   }
   ProductEntity toEntity() {

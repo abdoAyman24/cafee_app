@@ -2,10 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomProductImageItem extends StatelessWidget {
-  const CustomProductImageItem({
-    super.key,
-    required this.imageUrl,
-  });
+  const CustomProductImageItem({super.key, required this.imageUrl});
 
   final String imageUrl;
 
@@ -15,11 +12,10 @@ class CustomProductImageItem extends StatelessWidget {
       borderRadius: BorderRadiusGeometry.circular(15),
       child: CachedNetworkImage(
         fit: BoxFit.cover,
-        width: 150,
-        height: 150,
+        width: 140,
+        height: 130,
         imageUrl: imageUrl,
-        placeholder: (context, url) =>
-            CircularProgressIndicator(),
+        placeholder: (context, url) => CircularProgressIndicator(),
         errorWidget: (context, url, error) => Icon(Icons.error),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:caffee/Feature/home/domain/Entity/review_entity.dart';
+import 'package:equatable/equatable.dart';
 
-class ProductEntity {
+class ProductEntity implements Equatable {
   final String imageUrl;
   final String productId;
   final String name;
@@ -27,4 +28,12 @@ class ProductEntity {
 
     required this.reviewEntity,
   });
+  
+  @override
+  // TODO: implement props
+  List<Object?> get props =>[productId];
+  
+  @override
+  // TODO: implement stringify
+  bool? get stringify => throw UnimplementedError();
 }

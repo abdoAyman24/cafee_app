@@ -1,9 +1,11 @@
 import 'package:caffee/Core/Utils/app_color.dart';
 import 'package:caffee/Core/Utils/app_text_styles.dart';
 import 'package:caffee/Core/Widget/custom_product_image_item.dart';
+import 'package:caffee/Feature/Cart/Presentation/logic/cart_cubit/cart_cubit.dart';
 import 'package:caffee/Feature/home/domain/Entity/product_entity.dart';
 import 'package:caffee/Core/Widget/product_details_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Product_item extends StatelessWidget {
@@ -42,7 +44,7 @@ class Product_item extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
-                  child: CustomProductImageItem(imageUrl:  product.imageUrl),
+                  child: CustomProductImageItem(imageUrl: product.imageUrl),
                 ),
                 //  const SizedBox(height: 5),
                 Text(
@@ -66,7 +68,9 @@ class Product_item extends StatelessWidget {
                     Text('${product.priceS}', style: AppText.medium18),
                     Spacer(),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        context.read<CartCubit>().addProduct(product);
+                      },
                       child: Container(
                         padding: EdgeInsets.all(2),
                         decoration: BoxDecoration(
@@ -86,4 +90,3 @@ class Product_item extends StatelessWidget {
     );
   }
 }
-
