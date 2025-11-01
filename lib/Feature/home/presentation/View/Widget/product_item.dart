@@ -18,7 +18,10 @@ class Product_item extends StatelessWidget {
         Navigator.pushNamed(
           context,
           ProductDetailsView.routeName,
-          arguments: product,
+          arguments:  {
+    'product': product,
+    'cartCubit': context.read<CartCubit>(),
+  },
         );
       },
       child: Container(

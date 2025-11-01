@@ -59,7 +59,13 @@ class _BuyDetailsWidgetState extends State<BuyDetailsWidget> {
           flex: 2,
           child: GestureDetector(
             onTap: () {
-              context.read<CartCubit>().addProduct(widget.product);
+              context.read<CartCubit>().addProduct(ProductEntity(imageUrl: widget.product.imageUrl,
+               productId: widget.product.productId, name: widget.product.name,
+                additional: widget.product.additional, details: widget.product.details, rate: widget.product.rate,
+                 priceS:context.read<ProductSizeCubit>().productSize==ProductSize.smalle?
+                  widget.product.priceS:context.read<ProductSizeCubit>().productSize==ProductSize.medium?widget.product.priceM:widget.product.priceL, 
+                 priceM: widget.product.priceM, priceL: widget.product.priceL, 
+                 reviewEntity: widget.product.reviewEntity));
             },
             child: Container(
               height: 20.h,
