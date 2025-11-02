@@ -6,6 +6,6 @@ class FavoriteView extends StatelessWidget {
   static const String routeName = 'FavoriteView';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: const FavoriteViewBody());
+     return Scaffold(body: FavoriteViewBody());
   }
 }

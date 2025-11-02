@@ -1,4 +1,6 @@
+import 'package:caffee/Core/Cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:caffee/Core/helper/on_generate_route.dart';
+import 'package:caffee/Core/repo/favorite_repo/favorite_repo.dart';
 import 'package:caffee/Core/service/service_locator.dart';
 import 'package:caffee/Core/service/shared_preferences.dart';
 import 'package:caffee/Core/utils/AppTheme.dart';
@@ -30,8 +32,16 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(192, 245),
       builder: (context, child) {
-        return BlocProvider(
-          create: (context) => ProductCubit(getIt.get<ProductRepo>()),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => ProductCubit(getIt.get<ProductRepo>()),
+            ),
+            BlocProvider(
+              create: (context) => FavoriteCubit(getIt.get<FavoriteRepo>())..getFavoriteData(),
+            ),
+           
+          ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: AppTheme,

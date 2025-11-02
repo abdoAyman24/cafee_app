@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailsBackBottom extends StatelessWidget {
-  const DetailsBackBottom({super.key});
-
+  const DetailsBackBottom({super.key,});
+  
   @override
   Widget build(BuildContext context) {
     return Positioned(

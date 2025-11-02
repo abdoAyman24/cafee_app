@@ -30,12 +30,53 @@ class FireStoreService extends DataBaseService {
     if (documentId != null) {
       var json = await firestore.collection(path).doc(documentId).get();
       return json.data() as Map<String, dynamic>;
-    }else{
+    } else {
       Query<Map<String, dynamic>> data = firestore.collection(path);
 
-    var result = await data.get();
-    return result.docs.map((e) =>e.data()).toList();
+      var result = await data.get();
+      return result.docs.map((e) => e.data()).toList();
     }
+  }
+
+  @override
+  Stream<List<Map<String, dynamic>>> getStremData({
+    required String path,
+    required String userId,
     
+  }) async* {
+    var data = firestore.collection(path).doc(userId).collection('favorites');
+
+    await for (var result in data.snapshots()) {
+      yield result.docs.map((e) => e.data()).toList();
+    }
+  }
+
+  @override
+  Future<void> addFavoriteData({
+    required String path,
+    required String userId,
+    required String productId,
+    required Map<String, dynamic> data,
+  }) async {
+    await firestore
+        .collection(path)
+        .doc(userId)
+        .collection('favorites')
+        .doc(productId)
+        .set(data);
+  }
+
+  @override
+  Future<void> deleteData({
+    required String path,
+    required String userId,
+    required String productId,
+  }) async {
+    await firestore
+        .collection(path)
+        .doc(userId)
+        .collection('favorites')
+        .doc(productId)
+        .delete();
   }
 }

@@ -29,6 +29,38 @@ class ProductModel {
     required this.reviewModel,
   });
 
+Map<String, dynamic> toJson() {
+    return {
+      'imageUrl': imageUrl,
+      'productId': productId,
+      'name': name,
+      'additional': additional,
+      'details': details,
+      'rate': rate,
+      'priceS': priceS,
+      'priceM': priceM,
+      'priceL': priceL,
+      'reviewEntity': reviewModel.map((e) {
+        e.toJson();
+      }).toList(),
+    };
+  }
+
+  factory ProductModel.fromEntity(ProductEntity product) {
+    return ProductModel(
+      imageUrl: product.imageUrl,
+      productId: product.productId,
+      name: product.name,
+      additional: product.additional,
+      details: product.details,
+      rate: product.rate,
+      priceS: product.priceS,
+      priceM: product.priceM,
+      priceL: product.priceL,
+      reviewModel:product.reviewEntity.map((e)=>ReviewModel.fromEntity(e)).toList(),
+    );
+  }
+
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
       imageUrl: json['imageUrl'],
@@ -39,10 +71,12 @@ class ProductModel {
       rate: json['rate'],
 
       priceS: json['priceS'],
-            priceM: json['priceM'],
+      priceM: json['priceM'],
       priceL: json['priceL'],
 
-      reviewModel: List<ReviewModel>.from(json['reviewEntity']?.map((e)=>ReviewModel.fromJson(e))),
+      reviewModel: List<ReviewModel>.from(
+        json['reviewEntity']?.map((e) => ReviewModel.fromJson(e)),
+      ),
     );
   }
   ProductEntity toEntity() {

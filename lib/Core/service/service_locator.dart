@@ -1,3 +1,5 @@
+import 'package:caffee/Core/repo/favorite_repo/favorite_repo.dart';
+import 'package:caffee/Core/repo/favorite_repo/favorite_repo_impl.dart';
 import 'package:caffee/Core/service/data_base_service.dart';
 import 'package:caffee/Core/service/fire_store_service.dart';
 import 'package:caffee/Core/service/firebase_auth_service.dart';
@@ -12,6 +14,8 @@ void setUpGetIt() {
   getIt.registerSingleton<DataBaseService>(FireStoreService());
   getIt.registerSingleton<FireBaseAuthService>(FireBaseAuthService());
   getIt.registerSingleton<ProductRepo>(ProductRepoImpl(dataBaseService: getIt.get<DataBaseService>()));
+  getIt.registerSingleton<FavoriteRepo>(FavoriteRepoImpl(dataBaseService: getIt.get<DataBaseService>()));
+
 
   getIt.registerSingleton<UserRepo>(UserRepoImpl(dataBaseService: getIt.get<DataBaseService>(), fireBaseAuthService: getIt.get<FireBaseAuthService>()));
 

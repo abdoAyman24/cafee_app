@@ -1,3 +1,4 @@
+import 'package:caffee/Core/Cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:caffee/Feature/Auth/Presentation/View/Widget/sign_up_view.dart';
 import 'package:caffee/Feature/Auth/Presentation/View/sign_in_view.dart';
 import 'package:caffee/Feature/Cart/Presentation/View/cart_view.dart';
@@ -25,11 +26,15 @@ Route<dynamic> onGenerateRoute(RouteSettings setting) {
 
   final product = args['product'] as ProductEntity;
   final cartCubit = args['cartCubit'] as CartCubit;
+  final favoriteCubit = args['favoriteCubit'] as FavoriteCubit;
+
 
       return MaterialPageRoute(
-        
-        builder: (context) => BlocProvider.value(
-      value: cartCubit,
+    builder: (context) => MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: cartCubit),
+        BlocProvider.value(value: favoriteCubit),
+      ],
       child: ProductDetailsView(product: product),
     ),
       );

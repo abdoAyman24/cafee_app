@@ -1,3 +1,4 @@
+import 'package:caffee/Core/Cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:caffee/Core/Utils/app_color.dart';
 import 'package:caffee/Core/Utils/app_text_styles.dart';
 import 'package:caffee/Core/Widget/custom_product_image_item.dart';
@@ -21,6 +22,7 @@ class Product_item extends StatelessWidget {
           arguments:  {
     'product': product,
     'cartCubit': context.read<CartCubit>(),
+    'favoriteCubit':context.read<FavoriteCubit>()
   },
         );
       },

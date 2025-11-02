@@ -1,8 +1,10 @@
+import 'package:caffee/Core/Cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:caffee/Core/Utils/app_color.dart';
 import 'package:caffee/Core/Utils/app_text_styles.dart';
 import 'package:caffee/Core/Widget/custom_product_image_item.dart';
 import 'package:caffee/Feature/home/domain/Entity/product_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FavoriteProductItem extends StatelessWidget {
@@ -71,7 +73,18 @@ class FavoriteProductItem extends StatelessWidget {
                         style: AppText.semiBold20,
                       ),
                       SizedBox(width: 40.w),
-                      Icon(Icons.favorite, color: appColor.primary, size: 30),
+                      InkWell(
+                        onTap: () {
+                          context.read<FavoriteCubit>().deleteFromFavorite(
+                            product,
+                          );
+                        },
+                        child: Icon(
+                          Icons.favorite,
+                          color: appColor.primary,
+                          size: 30,
+                        ),
+                      ),
                     ],
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:caffee/Core/Utils/app_text_styles.dart';
+import 'package:caffee/Core/helper/get_user_data.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -15,7 +16,7 @@ class HomeAppBar extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Abdo', style: AppText.bold20),
+            Text('${getUser().name}', style: AppText.bold20),
             Text('Hello Sir...', style: AppText.bold13),
           ],
         ),

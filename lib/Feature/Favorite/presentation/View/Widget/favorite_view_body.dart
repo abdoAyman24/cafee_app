@@ -1,8 +1,8 @@
+
 import 'package:caffee/Core/Utils/app_color.dart';
 import 'package:caffee/Core/Widget/customAppBar.dart';
 import 'package:caffee/Core/Widget/custom_search.dart';
-import 'package:caffee/Core/dummy_data/dummy_product.dart';
-import 'package:caffee/Feature/Favorite/presentation/View/Widget/favorite_List_view_product.dart';
+import 'package:caffee/Feature/Favorite/presentation/View/Widget/favorite_view_body_rebuild.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteViewBody extends StatelessWidget {
@@ -30,12 +30,7 @@ class FavoriteViewBody extends StatelessWidget {
           CustomSearch(),
 
           const SizedBox(height: 20),
-          // Expanded(
-          //   child: FavoriteGridViewProduct(products: DummyProduct().products),
-          // ),
-          Expanded(
-            child: FavoriteListViewProduct(products: DummyProduct().products),
-          ),
+          FavoriteViewBodyRebuild(),
         ],
       ),
     );

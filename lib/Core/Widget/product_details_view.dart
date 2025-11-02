@@ -41,7 +41,7 @@ class ProductDetailsView extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    FavoriteWidgetDetails(),
+                    FavoriteWidgetDetails(productEntity: product,),
                     DetailsBackBottom(),
                     ProductDetailsWidget(product: product),
                   ],

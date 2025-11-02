@@ -12,6 +12,14 @@ class ReviewModel {
     required this.description,
     required this.rate,
   });
+ Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'data': date,
+      'description': description,
+      'rate': rate,
+    };
+  }
 
   ReviewEntity toEntity() {
     return ReviewEntity(

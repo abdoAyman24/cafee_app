@@ -38,6 +38,7 @@ class UserRepoImpl extends UserRepo {
       dataBaseService.addUser(
         path: BackEndPoint.addUsers,
         json: UserModel.fromUser(
+          id: user.uid,
           email: user.email!,
           name: name,
           number: number,
@@ -45,6 +46,7 @@ class UserRepoImpl extends UserRepo {
         documentId: user.uid,
       );
       UserEntity userEntity = UserModel.fromUser(
+         id: user.uid,
         email: user.email!,
         name: name,
         number: number,
@@ -89,6 +91,7 @@ class UserRepoImpl extends UserRepo {
           .signInWithGoogle();
       User user = userCredintial.user!;
       UserModel userModel = UserModel.fromUser(
+         id: user.uid,
         email: user.email!,
         name: user.displayName!,
         number: user.phoneNumber ?? '',
@@ -122,6 +125,7 @@ class UserRepoImpl extends UserRepo {
         );
       }
       UserModel userModel = UserModel.fromUser(
+         id: user.uid,
         email: user.emailVerified?user.email!:'not found',
         name: user.displayName!,
         number: user.phoneNumber ?? '',
