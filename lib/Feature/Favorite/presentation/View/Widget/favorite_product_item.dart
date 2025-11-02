@@ -15,7 +15,7 @@ class FavoriteProductItem extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * 0.96,
       height: MediaQuery.of(context).size.height * 0.18,
-      padding: EdgeInsets.all(13),
+      padding: EdgeInsets.all(10),
       decoration: ShapeDecoration(
         gradient: LinearGradient(
           begin: Alignment(0.09, 0.04),
@@ -72,7 +72,8 @@ class FavoriteProductItem extends StatelessWidget {
                         product.priceM.toString(),
                         style: AppText.semiBold20,
                       ),
-                      SizedBox(width: 40.w),
+
+                      SizedBox(width: 50.w),
                       InkWell(
                         onTap: () {
                           context.read<FavoriteCubit>().deleteFromFavorite(

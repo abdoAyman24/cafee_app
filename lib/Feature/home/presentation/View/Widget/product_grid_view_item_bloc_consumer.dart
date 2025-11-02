@@ -11,25 +11,25 @@ class ProductGridViewItemBolcConsumer extends StatelessWidget {
   final List<ProductEntity> products;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: BlocConsumer<ProductCubit, ProductState>(
-        listener: (context, state) {
-          if (state is ProductFailure) {
-            showMessage(context, state.errorMessage);
-          }
-        },
-        builder: (context, state) {
-          if (state is ProductSuccess) {
-            return ProductGridViewItem(products: state.products);
-          } else if (state is ProductLoading) {
-            return Skeletonizer(
-              enabled: true,
-              child: ProductGridViewItem(products: products),
-            );
-          }
-          return Center(child: Text('please Try again later'));
-        },
-      ),
+    return BlocConsumer<ProductCubit, ProductState>(
+      listener: (context, state) {
+        if (state is ProductFailure) {
+          showMessage(context, state.errorMessage);
+        }
+      },
+      builder: (context, state) {
+        if (state is ProductSuccess) {
+          return ProductGridViewItem(products: state.products);
+        } else if (state is ProductLoading) {
+          return Skeletonizer.sliver(
+            enabled: true,
+            child: ProductGridViewItem(products: products),
+          );
+        }
+        return SliverToBoxAdapter(
+          child: Center(child: Text('please Try again later')),
+        );
+      },
     );
   }
 }

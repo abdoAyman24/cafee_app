@@ -13,24 +13,23 @@ class CartViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.all(10.0),
       child: Column(
         children: [
-          SizedBox(height: MediaQuery.of(context).size.height * 0.04),
           Expanded(
             child: CustomScrollView(
               scrollDirection: Axis.vertical,
               slivers: [
                 SliverToBoxAdapter(
                   child: CustomAppBar(
-                    leftWidget: Text('Shoping Cart', style: AppText.bold23),
+                    leftWidget: Text('Shoping Cart', style: AppText.bold28),
                     rightWidget: SizedBox(),
                     showRightWidget: false,
                   ),
                 ),
                 SliverToBoxAdapter(
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.04,
+                    height: MediaQuery.of(context).size.height * 0.02,
                   ),
                 ),
                 CartListViewProduct(

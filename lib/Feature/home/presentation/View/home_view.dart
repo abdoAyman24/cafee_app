@@ -11,21 +11,28 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 10.h),
-          HomeAppBar(),
-          SizedBox(height: 12.h),
-          Text('Find The Best', style: AppText.bold28),
-          Text('Coffee For You', style: AppText.bold28),
-          SizedBox(height: 11.h),
-          CustomSearch(),
-          SizedBox(height: 11.h),
-          ProductGridViewItemBolcConsumer(products: DummyProduct().products),
-        ],
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  HomeAppBar(),
+                  SizedBox(height: 12.h),
+                  Text('Find The Best', style: AppText.bold28),
+                  Text('Coffee For You', style: AppText.bold28),
+                  SizedBox(height: 11.h),
+                  CustomSearch(),
+                  SizedBox(height: 11.h),
+                ],
+              ),
+            ),
+            ProductGridViewItemBolcConsumer(products: DummyProduct().products),
+          ],
+        ),
       ),
     );
   }
