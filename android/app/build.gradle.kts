@@ -33,6 +33,22 @@ android {
 
        manifestPlaceholders["appAuthRedirectScheme"] = "fb1535343354483086"
     }
+    
+    // ✅ استخدم صيغة Kotlin DSL الصحيحة هنا
+    flavorDimensions += "default"
+
+    productFlavors {
+        create("production") {
+            dimension = "default"
+            resValue("string", "app_name", "Caffee Production")
+        }
+
+        create("development") {
+            dimension = "default"
+            applicationIdSuffix = ".development"
+            resValue("string", "app_name", "Caffee Development")
+        }
+    }
 
     buildTypes {
         release {
