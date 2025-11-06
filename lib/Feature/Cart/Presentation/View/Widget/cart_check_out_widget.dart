@@ -1,6 +1,6 @@
 import 'package:caffee/Core/Utils/app_text_styles.dart';
 import 'package:caffee/Core/Widget/custom_elevat_button.dart';
-import 'package:caffee/Core/efwkmfekld/app_color.dart';
+import 'package:caffee/Core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 
 class CartCheckOutWidget extends StatelessWidget {
