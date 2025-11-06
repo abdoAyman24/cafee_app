@@ -1,5 +1,5 @@
-import 'package:caffee/Core/utils/app_color.dart';
-import 'package:caffee/Core/utils/app_text_styles.dart';
+import 'package:caffee/Core/efwkmfekld/app_color.dart';
+import 'package:caffee/Core/efwkmfekld/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomAuthHead extends StatelessWidget {
