@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:caffee/Core/Utils_core/app_color.dart';
-import 'package:caffee/Core/Utils_core/app_text_styles.dart';
+import 'package:caffee/Core/Utils/app_color.dart';
+import 'package:caffee/Core/Utils/app_text_styles.dart';
 import 'package:caffee/Core/Widget/custom_product_image_item.dart';
 import 'package:caffee/Core/helper/container_decoration.dart';
 import 'package:caffee/Feature/Cart/Presentation/logic/cart_cubit/cart_cubit.dart';
