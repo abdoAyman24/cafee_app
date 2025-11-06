@@ -17,7 +17,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // To Fix Text being Hidding bug Screen Utile in realese mode
+  // To Fix Text being Hidding bug Screen Utile in realese modee
   await ScreenUtil.ensureScreenSize();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   SharedPreferencesSingleton.init();
