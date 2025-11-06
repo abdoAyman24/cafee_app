@@ -1,5 +1,5 @@
-import 'package:caffee/Core/Utils/app_color.dart';
-import 'package:caffee/Core/Utils/app_text_styles.dart';
+import 'package:caffee/Core/Utils_core/app_color.dart';
+import 'package:caffee/Core/Utils_core/app_text_styles.dart';
 import 'package:caffee/Feature/Cart/Presentation/logic/cart_cubit/cart_cubit.dart';
 import 'package:caffee/Feature/home/domain/Entity/product_entity.dart';
 import 'package:caffee/Feature/home/presentation/manager/Product_Size_cubit/product_size_cubit.dart';

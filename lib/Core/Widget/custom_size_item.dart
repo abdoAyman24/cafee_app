@@ -1,4 +1,4 @@
-import 'package:caffee/Core/Utils/app_text_styles.dart';
+import 'package:caffee/Core/Utils_core/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomSizeItem extends StatelessWidget {
