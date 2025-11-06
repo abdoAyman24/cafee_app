@@ -16,7 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
-  //main production
+  //main production.
   WidgetsFlutterBinding.ensureInitialized();
   // To Fix Text being Hidding bug Screen Utile in realese mode
   await ScreenUtil.ensureScreenSize();
