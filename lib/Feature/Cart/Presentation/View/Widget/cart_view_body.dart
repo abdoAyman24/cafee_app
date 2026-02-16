@@ -1,5 +1,5 @@
 import 'package:caffee/Core/Widget/customAppBar.dart';
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:caffee/Feature/Cart/Presentation/View/Widget/cart_check_out_widget.dart';
 import 'package:caffee/Feature/Cart/Presentation/View/Widget/cart_list_view_product.dart';
 import 'package:caffee/Feature/Cart/Presentation/logic/cart_cubit/cart_cubit.dart';
@@ -45,11 +45,10 @@ class CartViewBody extends StatelessWidget {
           BlocBuilder<CartItemCubit, CartItemState>(
             builder: (context, state) {
               return CartCheckOutWidget(
-                price: context
+                cartEntity: context
                     .watch<CartCubit>()
                     .cartEntity
-                    .calculateTotalPrice(),
-                total: context.watch<CartCubit>().cartEntity.cartItems.length,
+,
               );
             },
           ),

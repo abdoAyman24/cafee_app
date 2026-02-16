@@ -1,4 +1,5 @@
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/Utils/app_color.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextForm extends StatefulWidget {
@@ -40,7 +41,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
               }
               return null;
             },
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
             keyboardType: widget.keyboardType,
             obscureText: !widget.showSuffixIcon
                 ? false
@@ -48,6 +49,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
                 ? false
                 : true,
             decoration: InputDecoration(
+              fillColor: AppColor.textFormColor,
               suffixIcon: widget.showSuffixIcon
                   ? IconButton(
                       onPressed: () {

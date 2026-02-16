@@ -12,6 +12,7 @@ class CartCubit extends Cubit<CartState> {
   CartEntity cartEntity = CartEntity(cartItems: []);
 
   void addProduct(ProductEntity product) {
+    emit(CartInitial());
     CartItemEntity cartItemEntity = cartEntity.getCartItemEntity(product);
     if (cartEntity.isExist(product)) {
       cartItemEntity.increseQuantity();

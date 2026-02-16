@@ -1,7 +1,7 @@
 import 'package:caffee/Core/Widget/custom_elevat_button.dart';
 import 'package:caffee/Core/Widget/custom_text_form.dart';
-import 'package:caffee/Core/utils_/app_color.dart';
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/utils/app_color.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:caffee/Feature/Auth/Presentation/Manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:caffee/Feature/Auth/Presentation/View/Widget/custom_auth_head.dart';
 import 'package:flutter/material.dart';
@@ -100,7 +100,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   Text(
                     'Already have account?  ',
                     textAlign: TextAlign.center,
-                    style: AppText.medium16.copyWith(color: appColor.greyText),
+                    style: AppText.medium16.copyWith(color: AppColor.greyText),
                   ),
                   InkWell(
                     onTap: () {

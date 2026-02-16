@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:caffee/Core/Widget/custom_product_image_item.dart';
 import 'package:caffee/Core/helper/container_decoration.dart';
-import 'package:caffee/Core/utils_/app_color.dart';
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/utils/app_color.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:caffee/Feature/Cart/Presentation/logic/cart_cubit/cart_cubit.dart';
 import 'package:caffee/Feature/Cart/Presentation/logic/cart_item_cubit/cart_item_cubit.dart';
 import 'package:caffee/Feature/Cart/domain/entity/cart_item_entity.dart';
@@ -29,7 +29,7 @@ class CartProductItem extends StatelessWidget {
         log('widget rebuild');
         return Container(
           width: MediaQuery.of(context).size.width * 0.96,
-          height: MediaQuery.of(context).size.height * 0.18,
+          height: 90.sp,
           padding: EdgeInsets.all(13),
           decoration: containerDecration(29),
           child: Row(
@@ -61,9 +61,10 @@ class CartProductItem extends StatelessWidget {
                         }
                       }(),
                       style: AppText.medium18.copyWith(
-                        color: appColor.greyText,
+                        color: AppColor.greyText,
                       ),
                     ),
+                    SizedBox(height: 5.sp),
 
                     Row(
                       children: [
@@ -72,7 +73,7 @@ class CartProductItem extends StatelessWidget {
                           cartItemEntity.productEntity.priceS.toString(),
                           style: AppText.semiBold20,
                         ),
-                        SizedBox(width: 40.w),
+                        SizedBox(width: 50.w),
                         GestureDetector(
                           onTap: () {
                             context.read<CartCubit>().deleteCartItem(
@@ -91,6 +92,7 @@ class CartProductItem extends StatelessWidget {
                         ),
                       ],
                     ),
+                    SizedBox(height: 5.sp),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [

@@ -1,7 +1,7 @@
 import 'package:caffee/Core/Widget/custom_elevat_button.dart';
 import 'package:caffee/Core/Widget/custom_text_form.dart';
-import 'package:caffee/Core/utils_/app_color.dart';
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/utils/app_color.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:caffee/Feature/Auth/Presentation/Manager/sign_in_cubit/sign_in_cubit.dart';
 import 'package:caffee/Feature/Auth/Presentation/View/Widget/custom_auth_head.dart';
 import 'package:caffee/Feature/Auth/Presentation/View/Widget/sign_up_view.dart';
@@ -94,7 +94,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                   Text(
                     'Don’t have account?   ',
                     textAlign: TextAlign.center,
-                    style: AppText.medium16.copyWith(color: appColor.greyText),
+                    style: AppText.medium16.copyWith(color: AppColor.greyText),
                   ),
                   GestureDetector(
                     onTap: () {

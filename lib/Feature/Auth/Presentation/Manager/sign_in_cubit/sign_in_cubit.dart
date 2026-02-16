@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:caffee/Feature/Auth/domain/user_entity.dart';
-import 'package:caffee/Feature/Auth/domain/user_repo.dart';
+import 'package:caffee/Feature/Auth/domain/entity/user_entity.dart';
+import 'package:caffee/Feature/Auth/domain/repo/user_repo.dart';
 import 'package:equatable/equatable.dart';
 
 part 'sign_in_state.dart';

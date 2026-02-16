@@ -1,7 +1,7 @@
 import 'package:caffee/Core/Cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:caffee/Core/Widget/custom_product_image_item.dart';
-import 'package:caffee/Core/utils_/app_color.dart';
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/utils/app_color.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:caffee/Feature/home/domain/Entity/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,7 +61,7 @@ class FavoriteProductItem extends StatelessWidget {
                       return product.additional;
                     }
                   }(),
-                  style: AppText.medium18.copyWith(color: appColor.greyText),
+                  style: AppText.medium18.copyWith(color: AppColor.greyText),
                 ),
 
                 Expanded(
@@ -82,7 +82,7 @@ class FavoriteProductItem extends StatelessWidget {
                         },
                         child: Icon(
                           Icons.favorite,
-                          color: appColor.primary,
+                          color: AppColor.primary,
                           size: 30,
                         ),
                       ),

@@ -1,5 +1,6 @@
-import 'package:caffee/Core/utils_/app_color.dart';
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/error/error_message.dart';
+import 'package:caffee/Core/utils/app_color.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:caffee/Feature/Cart/Presentation/logic/cart_cubit/cart_cubit.dart';
 import 'package:caffee/Feature/home/domain/Entity/product_entity.dart';
 import 'package:caffee/Feature/home/presentation/manager/Product_Size_cubit/product_size_cubit.dart';
@@ -29,7 +30,7 @@ class _BuyDetailsWidgetState extends State<BuyDetailsWidget> {
             children: [
               Text(
                 '\$',
-                style: AppText.medium24.copyWith(color: appColor.primary),
+                style: AppText.medium24.copyWith(color: AppColor.primary),
               ),
               const SizedBox(width: 5),
               BlocBuilder<ProductSizeCubit, ProductSizeState>(
@@ -57,25 +58,47 @@ class _BuyDetailsWidgetState extends State<BuyDetailsWidget> {
         ),
         Expanded(
           flex: 2,
-          child: GestureDetector(
-            onTap: () {
-              context.read<CartCubit>().addProduct(ProductEntity(imageUrl: widget.product.imageUrl,
-               productId: widget.product.productId, name: widget.product.name,
-                additional: widget.product.additional, details: widget.product.details, rate: widget.product.rate,
-                 priceS:context.read<ProductSizeCubit>().productSize==ProductSize.smalle?
-                  widget.product.priceS:context.read<ProductSizeCubit>().productSize==ProductSize.medium?widget.product.priceM:widget.product.priceL, 
-                 priceM: widget.product.priceM, priceL: widget.product.priceL, 
-                 reviewEntity: widget.product.reviewEntity));
+          child: BlocListener<CartCubit, CartState>(
+            listener: (context, state) {
+              if (state is CartAddProduct) {
+                showMessage(context, 'Add Product Success');
+                Navigator.pop(context);
+              }
             },
-            child: Container(
-              height: 20.h,
-              decoration: ShapeDecoration(
-                color: appColor.primary,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+            child: GestureDetector(
+              onTap: () {
+                context.read<CartCubit>().addProduct(
+                  ProductEntity(
+                    imageUrl: widget.product.imageUrl,
+                    productId: widget.product.productId,
+                    name: widget.product.name,
+                    additional: widget.product.additional,
+                    details: widget.product.details,
+                    rate: widget.product.rate,
+                    priceS:
+                        context.read<ProductSizeCubit>().productSize ==
+                            ProductSize.smalle
+                        ? widget.product.priceS
+                        : context.read<ProductSizeCubit>().productSize ==
+                              ProductSize.medium
+                        ? widget.product.priceM
+                        : widget.product.priceL,
+                    priceM: widget.product.priceM,
+                    priceL: widget.product.priceL,
+                    reviewEntity: widget.product.reviewEntity,
+                  ),
+                );
+              },
+              child: Container(
+                height: 20.h,
+                decoration: ShapeDecoration(
+                  color: AppColor.primary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
+                child: Center(child: Text('Buy Now', style: AppText.bold28)),
               ),
-              child: Center(child: Text('Buy Now', style: AppText.bold28)),
             ),
           ),
         ),

@@ -1,7 +1,7 @@
 import 'package:caffee/Core/Cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:caffee/Core/Widget/custom_product_image_item.dart';
-import 'package:caffee/Core/utils_/app_color.dart';
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/utils/app_color.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:caffee/Feature/Cart/Presentation/logic/cart_cubit/cart_cubit.dart';
 import 'package:caffee/Feature/home/domain/Entity/product_entity.dart';
 import 'package:caffee/Core/Widget/product_details_view.dart';
@@ -19,11 +19,11 @@ class Product_item extends StatelessWidget {
         Navigator.pushNamed(
           context,
           ProductDetailsView.routeName,
-          arguments:  {
-    'product': product,
-    'cartCubit': context.read<CartCubit>(),
-    'favoriteCubit':context.read<FavoriteCubit>()
-  },
+          arguments: {
+            'product': product,
+            'cartCubit': context.read<CartCubit>(),
+            'favoriteCubit': context.read<FavoriteCubit>(),
+          },
         );
       },
       child: Container(
@@ -68,7 +68,7 @@ class Product_item extends StatelessWidget {
                   children: [
                     Text(
                       '\$',
-                      style: AppText.medium18.copyWith(color: appColor.primary),
+                      style: AppText.medium18.copyWith(color: AppColor.primary),
                     ),
                     Text('${product.priceS}', style: AppText.medium18),
                     Spacer(),
@@ -80,9 +80,9 @@ class Product_item extends StatelessWidget {
                         padding: EdgeInsets.all(2),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: appColor.primary,
+                          color: AppColor.primary,
                         ),
-                        child: Icon(Icons.add, color: appColor.black),
+                        child: Icon(Icons.add, color: AppColor.black),
                       ),
                     ),
                   ],

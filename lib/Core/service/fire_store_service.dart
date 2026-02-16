@@ -79,4 +79,44 @@ class FireStoreService extends DataBaseService {
         .doc(productId)
         .delete();
   }
+
+  @override
+  Future<void> updateData({required String path, required Map<String, dynamic> json, String? documentId})async {
+   
+      await firestore.collection(path).doc(documentId).update(json);
+    
+  }
+  
+  @override
+  Future<void> addOrder({required String userId, required String orderPath, required Map<String, dynamic> orderData}) async {
+  final firestore = FirebaseFirestore.instance;
+
+  final orderRef = firestore.collection(orderPath).doc(); // ID جديد
+
+  final orderId = orderRef.id;
+
+  final data = {
+    ...orderData,
+    'orderId': orderId,
+    'userId': userId,
+    'createdAt': FieldValue.serverTimestamp(),
+  };
+
+  //  نستخدم batch عشان الاتنين يتحفظوا مع بعض
+  WriteBatch batch = firestore.batch();
+
+  // حفظ في collection العامة
+  batch.set(orderRef, data);
+
+  // حفظ داخل user subcollection
+  final userOrderRef = firestore
+      .collection('users')
+      .doc(userId)
+      .collection('orders')
+      .doc(orderId);
+
+  batch.set(userOrderRef, data);
+
+  await batch.commit();
+}
 }

@@ -1,5 +1,6 @@
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSizeItem extends StatelessWidget {
   const CustomSizeItem({
@@ -16,7 +17,7 @@ class CustomSizeItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 50),
+        padding: EdgeInsets.symmetric(horizontal: 20.sp),
         decoration: ShapeDecoration(
           color: isSelect ? Colors.black : const Color(0xD81A1A1D),
           shape: RoundedRectangleBorder(

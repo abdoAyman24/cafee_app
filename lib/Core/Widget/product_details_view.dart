@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:caffee/Core/Widget/custom_buy_details_widget.dart';
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:caffee/Feature/home/domain/Entity/product_entity.dart';
 import 'package:caffee/Core/Widget/details_back_bottom.dart';
 import 'package:caffee/Feature/home/presentation/View/Widget/favorite_widget_details.dart';

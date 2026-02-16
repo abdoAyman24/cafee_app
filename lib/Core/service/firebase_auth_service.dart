@@ -7,7 +7,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class FireBaseAuthService {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-
   Future<void> deleteUser() async {
     await FirebaseAuth.instance.currentUser!.delete();
   }
@@ -19,6 +18,7 @@ class FireBaseAuthService {
     try {
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -85,27 +85,26 @@ class FireBaseAuthService {
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
-// Future<void> signInWithFacebook() async {
-//   try {
-//     final LoginResult result = await FacebookAuth.instance.login();
-//     if (result.status == LoginStatus.success) {
-//       // نجح التسجيل، احصل على accessToken
-//       final AccessToken accessToken = result.accessToken!;
-//       // ربطه بـ Firebase Auth
-//       final OAuthCredential credential = FacebookAuthProvider.credential(accessToken.token);
-//       await FirebaseAuth.instance.signInWithCredential(credential);
-//     } else {
-//       print('Facebook login failed: ${result.message}');
-//     }
-//   } catch (e) {
-//     print('Error: $e');
-//   }
-// }
+  // Future<void> signInWithFacebook() async {
+  //   try {
+  //     final LoginResult result = await FacebookAuth.instance.login();
+  //     if (result.status == LoginStatus.success) {
+  //       // نجح التسجيل، احصل على accessToken
+  //       final AccessToken accessToken = result.accessToken!;
+  //       // ربطه بـ Firebase Auth
+  //       final OAuthCredential credential = FacebookAuthProvider.credential(accessToken.token);
+  //       await FirebaseAuth.instance.signInWithCredential(credential);
+  //     } else {
+  //       print('Facebook login failed: ${result.message}');
+  //     }
+  //   } catch (e) {
+  //     print('Error: $e');
+  //   }
+  // }
 
   Future<UserCredential> signInWithFacebook() async {
     // Trigger the sign-in flow
     final LoginResult loginResult = await FacebookAuth.instance.login();
-    
 
     // Create a credential from the access token
     final OAuthCredential facebookAuthCredential =

@@ -1,7 +1,8 @@
-import 'package:caffee/Core/utils_/app_color.dart';
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/utils/app_color.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:caffee/Feature/home/domain/Entity/product_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
   const ProductDetailsWidget({super.key, required this.product});
@@ -42,14 +43,14 @@ class ProductDetailsWidget extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Icon(Icons.star_rounded, color: appColor.primary),
+                          Icon(Icons.star_rounded, color: AppColor.primary),
                           const SizedBox(width: 6),
                           Text('4.5', style: AppText.medium20),
                         ],
                       ),
                     ],
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.20),
+                  SizedBox(width: 24.sp),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,7 +71,7 @@ class ProductDetailsWidget extends StatelessWidget {
                               ),
                               child: Icon(
                                 Icons.free_breakfast,
-                                color: appColor.primary,
+                                color: AppColor.primary,
                               ),
                             ),
                             const SizedBox(width: 20),
@@ -88,7 +89,7 @@ class ProductDetailsWidget extends StatelessWidget {
                               ),
                               child: Icon(
                                 Icons.water_drop_sharp,
-                                color: appColor.primary,
+                                color: AppColor.primary,
                               ),
                             ),
                           ],

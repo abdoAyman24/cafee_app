@@ -15,10 +15,23 @@ abstract class DataBaseService {
   Stream<List<Map<String, dynamic>>> getStremData({
     required String path,
     required String userId,
-    
   });
 
-  Future<void> deleteData({ required String path,
+  Future<void> deleteData({
+    required String path,
     required String userId,
-    required String productId,});
+    required String productId,
+  });
+
+  Future<void> updateData({
+    required String path,
+    required Map<String, dynamic> json,
+    String? documentId,
+  });
+  Future<void> addOrder({
+    required String userId,
+    required String orderPath,
+
+    required Map<String, dynamic> orderData,
+  });
 }

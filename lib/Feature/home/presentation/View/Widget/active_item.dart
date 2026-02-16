@@ -1,4 +1,4 @@
-import 'package:caffee/Core/utils_/app_text_styles.dart';
+import 'package:caffee/Core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class ActiveItem extends StatelessWidget {

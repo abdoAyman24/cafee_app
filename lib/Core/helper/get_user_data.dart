@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:caffee/Core/service/shared_preferences.dart';
-import 'package:caffee/Feature/Auth/data/user_model.dart';
-import 'package:caffee/Feature/Auth/domain/user_entity.dart';
+import 'package:caffee/Feature/Auth/data/model/user_model.dart';
+import 'package:caffee/Feature/Auth/domain/entity/user_entity.dart';
 import 'package:caffee/constance.dart';
 
 UserEntity getUser() {
