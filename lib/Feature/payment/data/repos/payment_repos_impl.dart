@@ -51,16 +51,19 @@ class PaymentReposImpl extends PaymentRepos {
       List<OrderModel> orderModelList = cartItems
           .map((e) => OrderModel.fromCartItemEntity(e))
           .toList();
-      Map<String, dynamic> orderData =
-          orderModelList.map((e) => e.toJson()) as Map<String, dynamic>;
-      log(
-        '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++',
-      );
+      log('${orderModelList.map((e) => e.toJson())}');
+      Map<String, dynamic> orderData = {
+        'orders': orderModelList.map((e) => e.toJson()),
+      };
+
       log('$orderData');
       await dataBaseService.addOrder(
         orderData: orderData,
         orderPath: KOrders,
         userId: getUser().id,
+      );
+      log(
+        '++++++++++++++++++++++++Success+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++',
       );
       return Right(null);
     } catch (e) {

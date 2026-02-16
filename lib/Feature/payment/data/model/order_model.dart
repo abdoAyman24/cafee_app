@@ -22,9 +22,17 @@ class OrderModel {
 
   toJson() {
     return {
-      'product':ProductModel.fromEntity(productEntity),
-      'quantity':quantity,
-      'totalPrice':totalPrice,
+      'product': ProductModel.fromEntity(productEntity).toJson(),
+      'quantity': quantity,
+      'totalPrice': totalPrice,
     };
+  }
+
+  factory OrderModel.fromJson(Map<String, dynamic> json) {
+    return OrderModel(
+      productEntity: ProductModel.fromJson(json['product']).toEntity(),
+      quantity: json['quantity'],
+      totalPrice: json['totalPrice'],
+    );
   }
 }

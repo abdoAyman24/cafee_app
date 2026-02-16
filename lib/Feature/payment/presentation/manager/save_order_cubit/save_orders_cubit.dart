@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:caffee/Feature/Cart/domain/entity/cart_item_entity.dart';
 import 'package:caffee/Feature/payment/domain/repos/payment_repos.dart';
@@ -16,10 +18,14 @@ class SaveOrdersCubit extends Cubit<SaveOrdersState> {
     var result = await paymentRepos.addOrders(cartItems: cartItems);
     result.fold(
       (l) {
+        log('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+        log('Failure');
+        log(l.message);
         emit(SaveOrdersFailure(errorMessage: l.message));
       },
       (r) {
-        emit(SaveOrdersSuccess());
+        log('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+        log('Success');
       },
     );
   }

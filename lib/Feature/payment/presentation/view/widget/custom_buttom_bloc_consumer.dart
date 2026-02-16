@@ -30,6 +30,7 @@ class CustomButtomBlocConsumer extends StatelessWidget {
           context.read<SaveOrdersCubit>().saveOrderInFireBase(
             cartItems: cartEntity.cartItems,
           );
+          
           Navigator.pushNamedAndRemoveUntil(
             context,
             ThankView.routeName,
