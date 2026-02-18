@@ -9,14 +9,17 @@ class ProfileRecordInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            Text(text,style: AppText.medium18,),
-            Spacer(),
-            IconButton(onPressed: onPressed, icon: Icon(Icons.arrow_forward_ios)),
-          ],
+        InkWell(
+          onTap: onPressed,
+          child: Row(
+            children: [
+              Text(text, style: AppText.medium18),
+              Spacer(),
+              Icon(Icons.arrow_forward_ios),
+            ],
+          ),
         ),
-        Divider(height: 10,),
+        Divider(height: 10),
       ],
     );
   }

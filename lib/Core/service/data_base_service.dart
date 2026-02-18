@@ -1,3 +1,5 @@
+import 'package:caffee/Feature/payment/data/model/order_model.dart';
+
 abstract class DataBaseService {
   Future<void> addUser({
     required String path,
@@ -31,7 +33,8 @@ abstract class DataBaseService {
   Future<void> addOrder({
     required String userId,
     required String orderPath,
-
-    required Map<String, dynamic> orderData,
+required List<OrderModel> orderModelList ,
+    // required Map<String, dynamic> orderData,
   });
+ 
 }

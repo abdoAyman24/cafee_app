@@ -1,6 +1,6 @@
-import 'dart:developer';
-
 import 'package:caffee/Core/service/data_base_service.dart';
+import 'package:caffee/Feature/payment/data/model/order_model.dart';
+import 'package:caffee/Feature/profile/data/model/order_details_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FireStoreService extends DataBaseService {
@@ -94,7 +94,7 @@ class FireStoreService extends DataBaseService {
   Future<void> addOrder({
     required String userId,
     required String orderPath,
-    required Map<String, dynamic> orderData,
+    required List<OrderModel> orderModelList,
   }) async {
     final firestore = FirebaseFirestore.instance;
 
@@ -102,14 +102,21 @@ class FireStoreService extends DataBaseService {
 
     final orderId = orderRef.id;
 
-    final data = {
-      ...orderData,
-      'orderId': orderId,
-      'userId': userId,
-      'createdAt': FieldValue.serverTimestamp(),
-    };
-    log('$data');
-
+    // orderDetailsModel is a data that store in fireBase
+    OrderDetailsModel orderDetailsModel = OrderDetailsModel(
+      orderModelList: orderModelList,
+      orderId: orderId,
+      userId: userId,
+      createAt: FieldValue.serverTimestamp().toString(),
+    );
+    // final data = {
+    //   ...orderData,
+    //   'orderId': orderId,
+    //   'userId': userId,
+    //   'createdAt': FieldValue.serverTimestamp(),
+    // };
+    final data = orderDetailsModel.tojson();
+    
     //  نستخدم batch عشان الاتنين يتحفظوا مع بعض
     WriteBatch batch = firestore.batch();
 

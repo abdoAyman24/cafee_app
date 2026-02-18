@@ -1,5 +1,6 @@
 import 'package:caffee/Core/helper/cache_helper.dart';
 import 'package:caffee/Feature/Auth/Presentation/View/sign_in_view.dart';
+import 'package:caffee/Feature/profile/presentation/view/my_orders.dart';
 import 'package:caffee/Feature/profile/presentation/view/widget/payment_option.dart';
 import 'package:caffee/Feature/profile/presentation/view/widget/profile_app_bar.dart';
 import 'package:caffee/Feature/profile/presentation/view/widget/profile_record_info.dart';
@@ -28,7 +29,12 @@ class ProfileViewBody extends StatelessWidget {
               Navigator.pushNamed(context, PaymentOption.routeName);
             },
           ),
-          ProfileRecordInfo(text: 'Payment History', onPressed: () {}),
+          ProfileRecordInfo(
+            text: 'Payment History',
+            onPressed: () {
+              Navigator.pushNamed(context, MyOrders.routeName);
+            },
+          ),
           ProfileRecordInfo(text: 'receipts', onPressed: () {}),
           SizedBox(height: 15.h),
           ProfileRecordInfo(

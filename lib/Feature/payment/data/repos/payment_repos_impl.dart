@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:caffee/Core/error/auth_faluire_service.dart';
 import 'package:caffee/Core/helper/get_user_data.dart';
 import 'package:caffee/Core/service/data_base_service.dart';
@@ -51,19 +49,15 @@ class PaymentReposImpl extends PaymentRepos {
       List<OrderModel> orderModelList = cartItems
           .map((e) => OrderModel.fromCartItemEntity(e))
           .toList();
-      log('${orderModelList.map((e) => e.toJson())}');
-      Map<String, dynamic> orderData = {
-        'orders': orderModelList.map((e) => e.toJson()),
-      };
-
-      log('$orderData');
+          
+      // Map<String, dynamic> orderData = {
+      //   'orders': orderModelList.map((e) => e.toJson()),
+      // };
+     
       await dataBaseService.addOrder(
-        orderData: orderData,
+        orderModelList: orderModelList,
         orderPath: KOrders,
         userId: getUser().id,
-      );
-      log(
-        '++++++++++++++++++++++++Success+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++',
       );
       return Right(null);
     } catch (e) {
