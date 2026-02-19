@@ -1,13 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:caffee/Core/utils/app_color.dart';
 import 'package:caffee/Core/utils/app_text_styles.dart';
+import 'package:caffee/Feature/payment/data/model/order_model.dart';
 import 'package:caffee/Feature/profile/presentation/view/widget/my_order_item_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OrderDetailsItem extends StatelessWidget {
-  const OrderDetailsItem({super.key});
-
+  const OrderDetailsItem({super.key, required this.orderModel});
+  final OrderModel orderModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,8 +30,7 @@ class OrderDetailsItem extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadiusGeometry.circular(14),
                     child: CachedNetworkImage(
-                      imageUrl:
-                          'https://wffygksikhphlzgvmvib.supabase.co/storage/v1/object/public/caffe_images/images/1000000041.jpg.jpg',
+                      imageUrl: orderModel.productEntity.imageUrl,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -48,8 +48,14 @@ class OrderDetailsItem extends StatelessWidget {
                     style: AppText.bold20.copyWith(fontStyle: FontStyle.italic),
                   ),
                   const SizedBox(height: 8),
-                  MyOrderItemInfo(head: 'Total', value: '2'),
-                  MyOrderItemInfo(head: 'Price', value: r'$200'),
+                  MyOrderItemInfo(
+                    head: 'Total',
+                    value: orderModel.quantity.toInt().toString(),
+                  ),
+                  MyOrderItemInfo(
+                    head: 'Price',
+                    value: r'$' + orderModel.totalPrice.toString(),
+                  ),
                 ],
               ),
             ),

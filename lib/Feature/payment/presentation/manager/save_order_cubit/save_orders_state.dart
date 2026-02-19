@@ -16,5 +16,5 @@ final class SaveOrdersSuccess extends SaveOrdersState {}
 final class SaveOrdersFailure extends SaveOrdersState {
   final String errorMessage;
 
-  SaveOrdersFailure({required this.errorMessage});
+ const SaveOrdersFailure({required this.errorMessage});
 }

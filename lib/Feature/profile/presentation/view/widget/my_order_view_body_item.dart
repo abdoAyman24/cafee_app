@@ -1,5 +1,7 @@
+import 'package:caffee/Core/helper/formate_date.dart';
 import 'package:caffee/Core/utils/app_color.dart';
 import 'package:caffee/Core/utils/app_text_styles.dart';
+import 'package:caffee/Feature/profile/domain/entity/order_details_entity.dart';
 import 'package:caffee/Feature/profile/presentation/view/order_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,14 +9,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class MyOrderViewBodyItem extends StatelessWidget {
   const MyOrderViewBodyItem({
     super.key,
-    required this.orderId,
-    required this.date,
-    required this.totalValue,
+    required this.orderModelEntityList
   });
 
-  final String orderId;
-  final String date;
-  final String totalValue;
+  final OrderDetailsEntity orderModelEntityList;
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -66,20 +65,22 @@ class MyOrderViewBodyItem extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      orderId,
-                      style: AppText.bold13.copyWith(color: AppColor.greyText),
+                      orderModelEntityList.orderId,
+                      style: AppText.regular11.copyWith(
+                        color: AppColor.greyText,
+                      ),
                     ),
                     const Spacer(),
-                    Text(date, style: AppText.regular16),
+                    Text(FormateDate(inputeDate: orderModelEntityList.createAt).date, style: AppText.regular13),
                   ],
                 ),
                 const SizedBox(height: 5),
-                Text(r'Value:$' + totalValue, style: AppText.semiBold16),
+                Text(r'Value:$' + orderModelEntityList.getTotal().toString(), style: AppText.semiBold16),
                 const SizedBox(height: 12),
 
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, OrderDetails.routeName);
+                    Navigator.pushNamed(context, OrderDetails.routeName,arguments: orderModelEntityList);
                   },
                   child: Container(
                     decoration: BoxDecoration(

@@ -15,6 +15,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   //main production.
@@ -23,6 +24,8 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   SharedPreferencesSingleton.init();
+  await initializeDateFormatting(KLanguage);
+
   CacheHelper().init();
   setUpGetIt();
   runApp(const MyApp());

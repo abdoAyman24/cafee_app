@@ -11,12 +11,15 @@ class ProfileRecordInfo extends StatelessWidget {
       children: [
         InkWell(
           onTap: onPressed,
-          child: Row(
-            children: [
-              Text(text, style: AppText.medium18),
-              Spacer(),
-              Icon(Icons.arrow_forward_ios),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Row(
+              children: [
+                Text(text, style: AppText.medium18),
+                Spacer(),
+                Icon(Icons.arrow_forward_ios),
+              ],
+            ),
           ),
         ),
         Divider(height: 10),

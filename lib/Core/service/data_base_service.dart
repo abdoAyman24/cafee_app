@@ -7,7 +7,7 @@ abstract class DataBaseService {
     String? documentId,
   });
   // Future<Map<String ,dynamic>> getUser({required String path,required String documentId});
-  Future<dynamic> getData({required String path, String? documentId});
+  Future<dynamic> getData({required String path, String? documentId,String? collectionId });
   Future<void> addFavoriteData({
     required String path,
     required String userId,

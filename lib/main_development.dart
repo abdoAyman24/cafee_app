@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   //main development
@@ -28,7 +29,7 @@ void main() async {
   Stripe.publishableKey = PaymentApiKey.stripePublishKey;
 
   setUpGetIt();
-
+  await initializeDateFormatting(KLanguage);
   await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }

@@ -27,11 +27,27 @@ class FireStoreService extends DataBaseService {
   //   var json = await firestore.collection(path).doc(documentId).get();
   //   return json.data() as Map<String ,dynamic>;
   // }
+
+  // collectionId to get order data
   @override
-  Future<dynamic> getData({required String path, String? documentId}) async {
+  Future<dynamic> getData({
+    required String path,
+    String? documentId,
+    String? collectionId,
+  }) async {
     if (documentId != null) {
-      var json = await firestore.collection(path).doc(documentId).get();
-      return json.data() as Map<String, dynamic>;
+      if (collectionId != null) {
+        var json = await firestore
+            .collection(path)
+            .doc(documentId)
+            .collection(collectionId)
+            .get();
+
+        return json.docs.map((e) => e.data()).toList();
+      } else {
+        var json = await firestore.collection(path).doc(documentId).get();
+        return json.data() as Map<String, dynamic>;
+      }
     } else {
       Query<Map<String, dynamic>> data = firestore.collection(path);
 
@@ -116,7 +132,7 @@ class FireStoreService extends DataBaseService {
     //   'createdAt': FieldValue.serverTimestamp(),
     // };
     final data = orderDetailsModel.tojson();
-    
+
     //  نستخدم batch عشان الاتنين يتحفظوا مع بعض
     WriteBatch batch = firestore.batch();
 

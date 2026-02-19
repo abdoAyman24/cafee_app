@@ -21,10 +21,10 @@ class OrderDetailsModel {
           .toList(),
       orderId: json['orderId'],
       userId: json['userId'],
-      createAt: json['createdAt'],
+      createAt: json['createdAt'].toString(),
     );
   }
-  
+
   OrderDetailsEntity toEntity() {
     return OrderDetailsEntity(
       orderModelList: orderModelList,

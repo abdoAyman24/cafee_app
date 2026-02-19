@@ -6,6 +6,18 @@ class OrderDetailsEntity {
   final String userId;
   final String createAt;
 
-  OrderDetailsEntity({required this.orderModelList, required this.orderId, required this.userId, required this.createAt});
+  OrderDetailsEntity({
+    required this.orderModelList,
+    required this.orderId,
+    required this.userId,
+    required this.createAt,
+  });
 
+  double getTotal() {
+    double totalPrice = 0;
+    for (var element in orderModelList) {
+      totalPrice += element.totalPrice;
+    }
+    return totalPrice;
+  }
 }
