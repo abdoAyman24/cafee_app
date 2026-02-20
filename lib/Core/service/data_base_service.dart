@@ -1,3 +1,5 @@
+import 'package:caffee/Feature/payment/data/model/order_model.dart';
+
 abstract class DataBaseService {
   Future<void> addUser({
     required String path,
@@ -5,7 +7,7 @@ abstract class DataBaseService {
     String? documentId,
   });
   // Future<Map<String ,dynamic>> getUser({required String path,required String documentId});
-  Future<dynamic> getData({required String path, String? documentId});
+  Future<dynamic> getData({required String path, String? documentId,String? collectionId });
   Future<void> addFavoriteData({
     required String path,
     required String userId,
@@ -15,7 +17,10 @@ abstract class DataBaseService {
   Stream<List<Map<String, dynamic>>> getStremData({
     required String path,
     required String userId,
+    String? collectionId
+
   });
+
 
   Future<void> deleteData({
     required String path,
@@ -31,7 +36,8 @@ abstract class DataBaseService {
   Future<void> addOrder({
     required String userId,
     required String orderPath,
-
-    required Map<String, dynamic> orderData,
+required List<OrderModel> orderModelList ,
+    // required Map<String, dynamic> orderData,
   });
+ 
 }

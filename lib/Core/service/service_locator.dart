@@ -9,7 +9,7 @@ import 'package:caffee/Feature/Auth/data/repo_impl/user_repo_impl.dart';
 import 'package:caffee/Feature/Auth/domain/repo/user_repo.dart';
 import 'package:caffee/Feature/home/data/product_repo_impl/product_repo_impl.dart';
 import 'package:caffee/Feature/home/domain/product_repo/product_repo.dart';
-import 'package:caffee/Feature/payment/data/repos/payment_repos_impl.dart';
+import 'package:caffee/Feature/payment/data/repos_impl/payment_repos_impl.dart';
 import 'package:caffee/Feature/payment/domain/repos/payment_repos.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';

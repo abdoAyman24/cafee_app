@@ -1,0 +1,25 @@
+import 'package:caffee/Feature/payment/data/model/order_model.dart';
+
+class OrderDetailsEntity {
+  final List<OrderModel> orderModelList;
+  final String orderId;
+  final String userId;
+  final String createAt;
+  final String orderStatus;
+
+  OrderDetailsEntity({
+    required this.orderModelList,
+    required this.orderId,
+    required this.userId,
+    required this.createAt,
+    required this.orderStatus,
+  });
+
+  double getTotal() {
+    double totalPrice = 0;
+    for (var element in orderModelList) {
+      totalPrice += element.totalPrice;
+    }
+    return totalPrice;
+  }
+}

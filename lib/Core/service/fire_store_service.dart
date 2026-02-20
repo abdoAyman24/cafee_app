@@ -1,4 +1,7 @@
+import 'package:caffee/Core/helper/order_status_data.dart';
 import 'package:caffee/Core/service/data_base_service.dart';
+import 'package:caffee/Feature/payment/data/model/order_model.dart';
+import 'package:caffee/Feature/profile/data/model/order_details_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FireStoreService extends DataBaseService {
@@ -25,11 +28,27 @@ class FireStoreService extends DataBaseService {
   //   var json = await firestore.collection(path).doc(documentId).get();
   //   return json.data() as Map<String ,dynamic>;
   // }
+
+  // collectionId to get order data
   @override
-  Future<dynamic> getData({required String path, String? documentId}) async {
+  Future<dynamic> getData({
+    required String path,
+    String? documentId,
+    String? collectionId,
+  }) async {
     if (documentId != null) {
-      var json = await firestore.collection(path).doc(documentId).get();
-      return json.data() as Map<String, dynamic>;
+      if (collectionId != null) {
+        var json = await firestore
+            .collection(path)
+            .doc(documentId)
+            .collection(collectionId)
+            .get();
+
+        return json.docs.map((e) => e.data()).toList();
+      } else {
+        var json = await firestore.collection(path).doc(documentId).get();
+        return json.data() as Map<String, dynamic>;
+      }
     } else {
       Query<Map<String, dynamic>> data = firestore.collection(path);
 
@@ -42,8 +61,18 @@ class FireStoreService extends DataBaseService {
   Stream<List<Map<String, dynamic>>> getStremData({
     required String path,
     required String userId,
-    
+    String? collectionId,
   }) async* {
+    if (collectionId != null) {
+      var data = firestore
+          .collection(path)
+          .doc(userId)
+          .collection(collectionId);
+
+      await for (var result in data.snapshots()) {
+        yield result.docs.map((e) => e.data()).toList();
+      }
+    }
     var data = firestore.collection(path).doc(userId).collection('favorites');
 
     await for (var result in data.snapshots()) {
@@ -81,42 +110,57 @@ class FireStoreService extends DataBaseService {
   }
 
   @override
-  Future<void> updateData({required String path, required Map<String, dynamic> json, String? documentId})async {
-   
-      await firestore.collection(path).doc(documentId).update(json);
-    
+  Future<void> updateData({
+    required String path,
+    required Map<String, dynamic> json,
+    String? documentId,
+  }) async {
+    await firestore.collection(path).doc(documentId).update(json);
   }
-  
+
   @override
-  Future<void> addOrder({required String userId, required String orderPath, required Map<String, dynamic> orderData}) async {
-  final firestore = FirebaseFirestore.instance;
+  Future<void> addOrder({
+    required String userId,
+    required String orderPath,
+    required List<OrderModel> orderModelList,
+  }) async {
+    final firestore = FirebaseFirestore.instance;
 
-  final orderRef = firestore.collection(orderPath).doc(); // ID جديد
+    final orderRef = firestore.collection(orderPath).doc(); // ID جديد
 
-  final orderId = orderRef.id;
+    final orderId = orderRef.id;
 
-  final data = {
-    ...orderData,
-    'orderId': orderId,
-    'userId': userId,
-    'createdAt': FieldValue.serverTimestamp(),
-  };
+    // orderDetailsModel is a data that store in fireBase
+    OrderDetailsModel orderDetailsModel = OrderDetailsModel(
+      orderModelList: orderModelList,
+      orderId: orderId,
+      userId: userId,
+      createAt: FieldValue.serverTimestamp().toString(),
+      orderStatus: OrderStatusData.pending,
+    );
+    // final data = {
+    //   ...orderData,
+    //   'orderId': orderId,
+    //   'userId': userId,
+    //   'createdAt': FieldValue.serverTimestamp(),
+    // };
+    final data = orderDetailsModel.tojson();
 
-  //  نستخدم batch عشان الاتنين يتحفظوا مع بعض
-  WriteBatch batch = firestore.batch();
+    //  نستخدم batch عشان الاتنين يتحفظوا مع بعض
+    WriteBatch batch = firestore.batch();
 
-  // حفظ في collection العامة
-  batch.set(orderRef, data);
+    // حفظ في collection العامة
+    batch.set(orderRef, data);
 
-  // حفظ داخل user subcollection
-  final userOrderRef = firestore
-      .collection('users')
-      .doc(userId)
-      .collection('orders')
-      .doc(orderId);
+    // حفظ داخل user subcollection
+    final userOrderRef = firestore
+        .collection('users')
+        .doc(userId)
+        .collection(orderPath)
+        .doc(orderId);
 
-  batch.set(userOrderRef, data);
+    batch.set(userOrderRef, data);
 
-  await batch.commit();
-}
+    await batch.commit();
+  }
 }

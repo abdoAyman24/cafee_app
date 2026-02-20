@@ -10,6 +10,9 @@ import 'package:caffee/Core/Widget/product_details_view.dart';
 import 'package:caffee/Feature/payment/presentation/view/payment_view.dart';
 import 'package:caffee/Feature/payment/presentation/view/payment_details_view.dart';
 import 'package:caffee/Feature/payment/presentation/view/thank_view.dart';
+import 'package:caffee/Feature/profile/domain/entity/order_details_entity.dart';
+import 'package:caffee/Feature/profile/presentation/view/my_orders.dart';
+import 'package:caffee/Feature/profile/presentation/view/order_details.dart';
 import 'package:caffee/Feature/profile/presentation/view/profile.dart';
 import 'package:caffee/Feature/profile/presentation/view/widget/payment_option.dart';
 import 'package:caffee/main_view.dart';
@@ -100,6 +103,20 @@ Route<dynamic> onGenerateRoute(RouteSettings setting) {
 
         builder: (context) =>
             ThankView(totalPrice: setting.arguments as double),
+      );
+      case MyOrders.routeName:
+      return MaterialPageRoute(
+        settings: RouteSettings(name: MyOrders.routeName),
+
+        builder: (context) =>
+            MyOrders(),
+      );
+      case OrderDetails.routeName:
+      return MaterialPageRoute(
+        settings: RouteSettings(name: OrderDetails.routeName),
+
+        builder: (context) =>
+            OrderDetails(orderDetailsEntity: setting.arguments as OrderDetailsEntity,),
       );
 
     default:
