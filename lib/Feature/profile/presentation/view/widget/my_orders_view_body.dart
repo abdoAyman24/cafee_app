@@ -1,8 +1,9 @@
 import 'dart:developer';
 import 'package:caffee/Core/helper/error_builder.dart';
 import 'package:caffee/Core/helper/get_user_data.dart';
+import 'package:caffee/Core/helper/order_status_data.dart';
 import 'package:caffee/Core/utils/app_text_styles.dart';
-import 'package:caffee/Feature/payment/presentation/manager/get_orders_cubit/get_orders_cubit.dart';
+import 'package:caffee/Feature/profile/presentation/manager/get_orders_cubit/get_orders_cubit.dart';
 import 'package:caffee/Feature/profile/domain/entity/order_details_entity.dart';
 import 'package:caffee/Feature/profile/presentation/view/widget/my_order_view_body_item.dart';
 import 'package:flutter/material.dart';
@@ -50,19 +51,20 @@ class _MyOrdersViewBodyState extends State<MyOrdersViewBody> {
                             orderId: '#64645646404',
                             userId: '#64645646404',
                             createAt: '04 Dec 25',
+                            orderStatus: OrderStatusData.pending
+                            ,
                           ),
                         );
                       },
                     ),
                   );
                 } else if (state is GetOrdersSuccess) {
-                  List<OrderDetailsEntity> orderDetailsEntityList =
-                      state.orderDetailsEntityList;
                   return ListView.builder(
-                    itemCount: orderDetailsEntityList.length,
+                    itemCount: state.orderDetailsEntityList.length,
                     itemBuilder: (context, index) {
                       return MyOrderViewBodyItem(
-                        orderModelEntityList: orderDetailsEntityList[index],
+                        orderModelEntityList:
+                            state.orderDetailsEntityList[index],
                       );
                     },
                   );

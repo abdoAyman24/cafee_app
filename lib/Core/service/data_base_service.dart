@@ -17,7 +17,10 @@ abstract class DataBaseService {
   Stream<List<Map<String, dynamic>>> getStremData({
     required String path,
     required String userId,
+    String? collectionId
+
   });
+
 
   Future<void> deleteData({
     required String path,

@@ -1,3 +1,4 @@
+import 'dart:developer';
 
 import 'package:caffee/Core/error/auth_faluire_service.dart';
 import 'package:caffee/Core/helper/back_end_key.dart';
@@ -79,11 +80,10 @@ class PaymentReposImpl extends PaymentRepos {
         documentId: userId,
         collectionId: KOrders,
       );
-      
+
       List<OrderDetailsModel> orderDetailsModelList = data
           .map((e) => OrderDetailsModel.fromJson(e))
           .toList();
-     
 
       List<OrderDetailsEntity> orderDetailsEntityList = orderDetailsModelList
           .map((e) => e.toEntity())
@@ -92,6 +92,31 @@ class PaymentReposImpl extends PaymentRepos {
       return right(orderDetailsEntityList);
     } catch (e) {
       return left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Stream<Either<Failure, List<OrderDetailsEntity>>> getStreamOrder({
+    required String userId,
+  }) async* {
+    try {
+      await for (var data in dataBaseService.getStremData(
+        path: BackEndPoint.getUsers,
+        userId: userId,
+        collectionId: KOrders,
+      )) {
+        List<OrderDetailsModel> orderDetailsModelList =
+            List<OrderDetailsModel>.from(
+              data.map((e) => OrderDetailsModel.fromJson(e)),
+            );
+        List<OrderDetailsEntity> entity = orderDetailsModelList
+            .map((e) => e.toEntity())
+            .toList();
+        yield Right(entity);
+      }
+    } catch (e) {
+      log(e.toString());
+      yield Left(ServerFailure(message: e.toString()));
     }
   }
 }

@@ -12,4 +12,7 @@ abstract class PaymentRepos {
     required List<CartItemEntity> cartItems,
   });
   Future<Either<Failure, List<OrderDetailsEntity>>> getOrder({required String userId});
+  Stream<Either<Failure, List<OrderDetailsEntity>>> getStreamOrder({required String userId});
+
+
 }

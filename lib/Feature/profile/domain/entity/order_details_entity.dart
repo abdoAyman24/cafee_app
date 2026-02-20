@@ -5,12 +5,14 @@ class OrderDetailsEntity {
   final String orderId;
   final String userId;
   final String createAt;
+  final String orderStatus;
 
   OrderDetailsEntity({
     required this.orderModelList,
     required this.orderId,
     required this.userId,
     required this.createAt,
+    required this.orderStatus,
   });
 
   double getTotal() {

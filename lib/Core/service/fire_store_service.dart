@@ -1,3 +1,4 @@
+import 'package:caffee/Core/helper/order_status_data.dart';
 import 'package:caffee/Core/service/data_base_service.dart';
 import 'package:caffee/Feature/payment/data/model/order_model.dart';
 import 'package:caffee/Feature/profile/data/model/order_details_model.dart';
@@ -60,7 +61,18 @@ class FireStoreService extends DataBaseService {
   Stream<List<Map<String, dynamic>>> getStremData({
     required String path,
     required String userId,
+    String? collectionId,
   }) async* {
+    if (collectionId != null) {
+      var data = firestore
+          .collection(path)
+          .doc(userId)
+          .collection(collectionId);
+
+      await for (var result in data.snapshots()) {
+        yield result.docs.map((e) => e.data()).toList();
+      }
+    }
     var data = firestore.collection(path).doc(userId).collection('favorites');
 
     await for (var result in data.snapshots()) {
@@ -124,6 +136,7 @@ class FireStoreService extends DataBaseService {
       orderId: orderId,
       userId: userId,
       createAt: FieldValue.serverTimestamp().toString(),
+      orderStatus: OrderStatusData.pending,
     );
     // final data = {
     //   ...orderData,

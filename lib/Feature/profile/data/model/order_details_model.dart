@@ -6,12 +6,14 @@ class OrderDetailsModel {
   final String orderId;
   final String userId;
   final String createAt;
+  final String orderStatus;
 
   OrderDetailsModel({
     required this.orderModelList,
     required this.orderId,
     required this.userId,
     required this.createAt,
+    required this.orderStatus,
   });
 
   factory OrderDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -22,6 +24,7 @@ class OrderDetailsModel {
       orderId: json['orderId'],
       userId: json['userId'],
       createAt: json['createdAt'].toString(),
+      orderStatus: json['status'],
     );
   }
 
@@ -31,6 +34,7 @@ class OrderDetailsModel {
       orderId: orderId,
       userId: userId,
       createAt: createAt,
+      orderStatus: orderStatus,
     );
   }
 
@@ -40,6 +44,7 @@ class OrderDetailsModel {
       'userId': userId,
       'createdAt': createAt,
       'orders': orderModelList.map((e) => e.toJson()),
+      'status': 'pending',
     };
   }
 }
